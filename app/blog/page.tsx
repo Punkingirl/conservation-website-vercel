@@ -1,0 +1,114 @@
+import Image from "next/image"
+import Link from "next/link"
+import { format } from "date-fns"
+import SiteHeader from "@/components/site-header"
+import SiteFooter from "@/components/site-footer"
+
+// Reduced to just three focused blog posts
+const mockBlogPosts = [
+  {
+    _id: "post-1",
+    title: "Kiwi Population Shows Promising Signs of Recovery",
+    slug: { current: "kiwi-population-recovery" },
+    publishedAt: "2023-11-15T09:00:00Z",
+    excerpt:
+      "Recent monitoring efforts have revealed a 15% increase in kiwi sightings across the peninsula, suggesting our predator control measures are having a positive impact.",
+    category: "Wildlife",
+    author: {
+      name: "Andy Marshall",
+      avatar: "/stylized-letter-st.png",
+    },
+  },
+  {
+    _id: "post-2",
+    title: "Volunteer Weekend: 20 New Traps Installed",
+    slug: { current: "volunteer-weekend-trap-installation" },
+    publishedAt: "2023-10-28T14:30:00Z",
+    excerpt:
+      "Our dedicated team of volunteers braved challenging weather to install 20 new predator traps, expanding our network to cover the western section of the peninsula.",
+    category: "Community",
+    author: {
+      name: "Andy Marshall",
+      avatar: "/abstract-geometric-mj.png",
+    },
+  },
+  {
+    _id: "post-5",
+    title: "New Funding Secured for Phase 3 Expansion",
+    slug: { current: "phase-3-funding-secured" },
+    publishedAt: "2023-09-10T10:00:00Z",
+    excerpt:
+      "We're thrilled to announce that we've secured additional funding from the Pacific Development and Conservation Trust to support the expansion of our conservation efforts into Phase 3.",
+    category: "News",
+    author: {
+      name: "Andy Marshall",
+      avatar: "/stylized-jl-logo.png",
+    },
+  },
+]
+
+export default function BlogPage() {
+  // Use our mock data instead of fetching from Sanity
+  const blogPosts = mockBlogPosts
+
+  return (
+    <div>
+      {/* Navigation */}
+      <SiteHeader currentPath="/blog" />
+
+      <main className="max-w-6xl mx-auto bg-white">
+        {/* Page Title */}
+        <div className="text-center my-12">
+          <h1 className="text-4xl font-bold tracking-wider">Blog</h1>
+        </div>
+
+        {/* Blog Posts Grid */}
+        <div className="px-6 mb-12">
+          {blogPosts.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {blogPosts.map((post) => (
+                <div key={post._id} className="border rounded-md p-6 flex flex-col">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-sm text-gray-600">{format(new Date(post.publishedAt), "dd MMMM yyyy")}</span>
+                    <span className="text-xs bg-gray-100 px-2 py-1 rounded">{post.category}</span>
+                  </div>
+
+                  <h2 className="text-xl font-semibold mb-3">{post.title}</h2>
+
+                  <p className="text-gray-600 text-sm mb-4 flex-grow">{post.excerpt}</p>
+
+                  <div className="flex items-center justify-between mt-4">
+                    <div className="flex items-center">
+                      {post.author?.avatar && (
+                        <Image
+                          src={post.author.avatar || "/placeholder.svg"}
+                          alt={post.author?.name || "Author"}
+                          width={24}
+                          height={24}
+                          className="rounded-full mr-2"
+                        />
+                      )}
+                      <span className="text-sm text-gray-600">{post.author?.name || "Anonymous"}</span>
+                    </div>
+
+                    <Link href={`/blog/${post.slug.current}`} className="text-sm font-medium hover:underline">
+                      Read
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-gray-500 mb-4">No blog posts found.</p>
+              <p className="text-gray-500">Blog posts will appear here once they are added to the Sanity CMS.</p>
+            </div>
+          )}
+        </div>
+      </main>
+
+      {/* Footer */}
+      <SiteFooter />
+    </div>
+  )
+}
