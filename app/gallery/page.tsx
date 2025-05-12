@@ -50,6 +50,24 @@ export default async function GalleryPage() {
       caption: "Rare footage of a kiwi foraging in its natural habitat",
       category: "wildlife",
     },
+    {
+      id: "local-5",
+      type: "video",
+      src: "/videos/Drone_Point2Millars.mov",
+      thumbnail: "/images/aerial-drone-view.jpeg",
+      alt: "Aerial drone footage over Millars Point",
+      caption: "Aerial drone footage over Millars Point, showcasing the stunning landscape and conservation area.",
+      category: "landscape",
+    },
+    {
+      id: "local-6",
+      type: "video",
+      src: "/videos/Stewart island Robin.mov",
+      thumbnail: "/images/stewart-island-robin-hero.webp",
+      alt: "Stewart Island Robin foraging",
+      caption: "Charming Stewart Island Robin foraging in the undergrowth, a rare sight in the wild.",
+      category: "wildlife",
+    },
   ]
 
   return (
@@ -62,14 +80,13 @@ export default async function GalleryPage() {
         <div className="text-center my-8">
           <h1 className="text-4xl font-bold uppercase tracking-wider">Gallery</h1>
         </div>
-
-        {/* Audio Feature */}
+        {/* Local Audio Clip */}
         <div className="mb-8 px-6">
-          <AudioPlayer
-            audioSrc="https://assets.mixkit.co/sfx/preview/mixkit-forest-birds-ambience-1210.mp3"
-            fallbackSrc="https://assets.mixkit.co/sfx/preview/mixkit-morning-birds-singing-in-the-forest-2457.mp3"
-            label="Listen to our birdsong"
-          />
+          <label className="block font-semibold mb-2">Tui, Bellbird & Kaka Calls (local recording)</label>
+          <audio controls style={{ width: '100%' }}>
+            <source src="/audios/Tui_Bellbird_Kaka.mov" type="audio/mp4" />
+            Your browser does not support the audio element.
+          </audio>
         </div>
 
         {/* Display images from Sanity if available, otherwise show local images */}
