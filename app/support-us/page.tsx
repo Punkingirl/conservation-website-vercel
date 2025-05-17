@@ -134,11 +134,11 @@ export default function SupportUsPage() {
                       className="flex-shrink-0"
                     >
                       <Image
-                        src="/images/give-a-trap-logo.png"
+                        src="/images/giveATrapLogo.png"
                         alt="Give a Trap Logo"
-                        width={150}
-                        height={150}
-                        className="rounded-md hover:opacity-90 transition-opacity"
+                        width={120}
+                        height={120}
+                        className="mx-auto mb-4"
                       />
                     </a>
                   </div>

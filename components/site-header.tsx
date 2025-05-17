@@ -8,8 +8,8 @@ interface SiteHeaderProps {
 
 export default function SiteHeader({ currentPath = "" }: SiteHeaderProps) {
   return (
-    <nav className="flex items-center justify-between p-6 bg-white border-b border-cambridge-blue">
-      <Logo className="h-10" />
+    <nav className="flex items-center justify-between p-8 bg-white border-b border-cambridge-blue">
+      <Logo />
       <div className="hidden md:flex items-center space-x-6">
         <Link
           href="/"
@@ -49,9 +49,9 @@ export default function SiteHeader({ currentPath = "" }: SiteHeaderProps) {
         </Link>
       </div>
       <div className="flex items-center space-x-4">
-        <button className="bg-dark-green text-white px-4 py-2 rounded hidden md:block hover:bg-spring-green transition-colors">
+        <Link href="/admin/login" className="bg-dark-green text-white px-4 py-2 rounded hidden md:block hover:bg-spring-green transition-colors">
           Login
-        </button>
+        </Link>
         <MobileNav currentPath={currentPath} />
       </div>
     </nav>

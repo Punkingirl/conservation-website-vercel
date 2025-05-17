@@ -48,13 +48,14 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center mb-8">
             <h2 className="text-3xl font-bold text-dark-green mb-6 font-montserrat">Our Vision</h2>
-            <p className="text-lg text-charcoal leading-relaxed mb-6">
-              We are a family with a vision - to restore our part of Rakiura to thrive the way it was intended - prior
-              to our introduced pests invading.
+            <p className="text-lg text-charcoal leading-relaxed mb-6 font-open-sans">
+              We are a family with a vision - to restore our part of Rakiura to thrive the way it was intended - prior to our introduced pests invading.
             </p>
-            <p className="text-lg text-charcoal leading-relaxed">
-              Our project purpose is to "rejuvenate indigenous flora and fauna on the Peninsula through the heavy
-              suppression of rats, possums, feral cats, and deer, along with eradication of introduced weeds."
+            <p className="text-lg text-charcoal leading-relaxed mb-6 font-open-sans">
+              We are also part of a larger vision - to see Rakiura pest free and thriving through Predator Free Rakiura 2050.
+            </p>
+            <p className="text-lg text-charcoal leading-relaxed italic font-open-sans">
+              Project Purpose:  "rejuvenate indigenous flora and fauna on the Peninsula through the heavy suppression of rats, possums, feral cats, and deer, along with eradication of introduced weeds"
             </p>
             <div className="mt-8">
               <Link
@@ -144,7 +145,7 @@ export default function Home() {
                       <div className="col-span-12 md:col-span-7 text-center md:text-left">
                         <div className="flex justify-center md:justify-start mb-4">
                           <div className="flex items-center">
-                            <Image src="/trap-nz-logo.png" alt="trap.nz logo" width={30} height={30} className="mr-2" />
+                            <Image src="/images/logo.png" alt="Millars Beach Conservation Trust Logo" width={30} height={30} className="mr-2" />
                             <h3 className="text-3xl font-bold text-white font-montserrat">
                               <span className="text-white">trap</span>
                               <span className="text-red-200">.</span>
@@ -173,7 +174,7 @@ export default function Home() {
                       <div className="hidden md:block md:col-span-5">
                         <div className="relative w-[140px] h-[280px] mx-auto">
                           <Image
-                            src="/trap-nz-mobile-app-map.png"
+                            src="/images/trap-nz-mobile-app-map.png"
                             alt="trap.nz mobile app"
                             width={140}
                             height={280}
@@ -206,7 +207,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-bold text-dark-green mb-6 font-montserrat">Wildlife at Millars Beach</h2>
-            <p className="text-lg text-charcoal leading-relaxed mb-8">
+            <p className="text-lg text-charcoal leading-relaxed mb-8 font-open-sans">
               Our conservation efforts are helping protect and restore native wildlife on the peninsula, including kiwi,
               tui, bellbirds, and many other species. Visit our About page to learn more and see footage of the wildlife
               we're working to protect.
@@ -225,7 +226,7 @@ export default function Home() {
       <section className="bg-dark-green text-white py-16">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold mb-4 font-montserrat">Join Our Conservation Efforts</h2>
-          <p className="text-lg mb-8 max-w-2xl mx-auto">
+          <p className="text-lg mb-8 max-w-2xl mx-auto font-open-sans">
             Whether through donations, volunteering, or spreading awareness, your support makes a meaningful difference
             in preserving this pristine ecosystem.
           </p>

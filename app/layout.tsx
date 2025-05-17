@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   title: "Millars Beach Conservation Trust",
   description: "Supporting conservation efforts at Millars Beach Peninsula, New Zealand",
   icons: {
-    icon: "/favicon.png",
+    icon: "/images/logo.png",
   },
     generator: 'v0.dev'
 }

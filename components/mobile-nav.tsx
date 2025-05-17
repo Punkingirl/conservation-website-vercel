@@ -77,7 +77,13 @@ const MobileNav = ({ currentPath = "" }: MobileNavProps) => {
             >
               Contact
             </Link>
-            <button className="bg-black text-white px-4 py-2 rounded mt-4">Login</button>
+            <Link
+              href="/admin/login/"
+              className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded mt-4 text-center w-full"
+              onClick={toggleMenu}
+            >
+              Login
+            </Link>
           </nav>
         </div>
       )}

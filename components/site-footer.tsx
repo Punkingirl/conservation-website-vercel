@@ -8,9 +8,9 @@ export default function SiteFooter() {
       <div className="max-w-6xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo and Mission */}
-          <div className="md:col-span-1">
-            <Logo className="h-10 mb-4" />
-            <p className="text-sm text-gray-600 mt-4">
+          <div className="md:col-span-1 flex flex-col items-center">
+            <Logo className="mb-6" />
+            <p className="text-sm text-gray-600 text-center">
               Dedicated to the conservation and restoration of Millars Beach Peninsula's natural environment.
             </p>
           </div>
