@@ -32,4 +32,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('api/', include('core.urls')),  # Add core app URLs
+    path('api/contact/', include('contact.urls')),  # Add contact app URLs
 ] 

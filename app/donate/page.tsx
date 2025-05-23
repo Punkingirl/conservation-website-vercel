@@ -42,12 +42,13 @@ export default function DonatePage() {
   const [customAmount, setCustomAmount] = useState("")
   const [formData, setFormData] = useState({
     isBusinessDonation: false,
+    name: "",
+    email: "",
+    message: "",
+    anonymousDonation: false,
     title: "",
-    firstName: "",
-    lastName: "",
     phone: "",
     address: "",
-    message: "",
   })
   const [paymentMethod, setPaymentMethod] = useState<"credit" | "direct">("credit")
   const [cardData, setCardData] = useState({
@@ -204,23 +205,60 @@ export default function DonatePage() {
             <h2 className="text-2xl font-bold mb-6 font-montserrat text-dark-green">Enter your details</h2>
 
             <div className="space-y-4">
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  id="isBusinessDonation"
-                  name="isBusinessDonation"
-                  checked={formData.isBusinessDonation}
-                  onChange={handleInputChange}
-                  className="h-4 w-4 text-sea-green border-gray-300 rounded focus:ring-sea-green"
-                />
-                <label htmlFor="isBusinessDonation" className="ml-2 block text-sm text-charcoal">
-                  This donation is on behalf of a business
+              {/* Name (required) */}
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-charcoal mb-1">
+                  Name <span className="text-red-500">*</span>
                 </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Your Name"
+                  value={formData.name || ''}
+                  onChange={handleInputChange}
+                  className="block w-full border-gray-300 rounded-md border p-2 focus:ring-sea-green focus:border-sea-green"
+                  required
+                />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* Email (required) */}
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-charcoal mb-1">
+                  Email Address <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Email Address"
+                  value={formData.email || ''}
+                  onChange={handleInputChange}
+                  className="block w-full border-gray-300 rounded-md border p-2 focus:ring-sea-green focus:border-sea-green"
+                  required
+                />
+              </div>
+
+              {/* Message (optional) */}
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-charcoal mb-1">
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="Message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  rows={3}
+                  className="block w-full border-gray-300 rounded-md border p-2 focus:ring-sea-green focus:border-sea-green"
+                />
+              </div>
+
+              {/* Optional fields */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
                 <div>
-                  <label htmlFor="title" className="sr-only">
+                  <label htmlFor="title" className="block text-sm font-medium text-charcoal mb-1">
                     Title
                   </label>
                   <input
@@ -233,43 +271,8 @@ export default function DonatePage() {
                     className="block w-full border-gray-300 rounded-md border p-2 focus:ring-sea-green focus:border-sea-green"
                   />
                 </div>
-
                 <div>
-                  <label htmlFor="firstName" className="sr-only">
-                    First Name
-                  </label>
-                  <input
-                    type="text"
-                    id="firstName"
-                    name="firstName"
-                    placeholder="First Name"
-                    value={formData.firstName}
-                    onChange={handleInputChange}
-                    className="block w-full border-gray-300 rounded-md border p-2 focus:ring-sea-green focus:border-sea-green"
-                    required
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="lastName" className="sr-only">
-                    Last Name
-                  </label>
-                  <input
-                    type="text"
-                    id="lastName"
-                    name="lastName"
-                    placeholder="Last Name"
-                    value={formData.lastName}
-                    onChange={handleInputChange}
-                    className="block w-full border-gray-300 rounded-md border p-2 focus:ring-sea-green focus:border-sea-green"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="phone" className="sr-only">
+                  <label htmlFor="phone" className="block text-sm font-medium text-charcoal mb-1">
                     Phone
                   </label>
                   <input
@@ -282,36 +285,35 @@ export default function DonatePage() {
                     className="block w-full border-gray-300 rounded-md border p-2 focus:ring-sea-green focus:border-sea-green"
                   />
                 </div>
+                <div>
+                  <label htmlFor="address" className="block text-sm font-medium text-charcoal mb-1">
+                    Address
+                  </label>
+                  <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    placeholder="Search for your address"
+                    value={formData.address}
+                    onChange={handleInputChange}
+                    className="block w-full border-gray-300 rounded-md border p-2 focus:ring-sea-green focus:border-sea-green"
+                  />
+                </div>
               </div>
 
-              <div>
-                <label htmlFor="address" className="sr-only">
-                  Address
-                </label>
+              {/* Anonymous donation checkbox */}
+              <div className="flex items-center mt-2">
                 <input
-                  type="text"
-                  id="address"
-                  name="address"
-                  placeholder="Search for your address"
-                  value={formData.address}
+                  type="checkbox"
+                  id="anonymousDonation"
+                  name="anonymousDonation"
+                  checked={formData.anonymousDonation || false}
                   onChange={handleInputChange}
-                  className="block w-full border-gray-300 rounded-md border p-2 focus:ring-sea-green focus:border-sea-green"
+                  className="h-4 w-4 text-sea-green border-gray-300 rounded focus:ring-sea-green"
                 />
-              </div>
-
-              <div>
-                <label htmlFor="message" className="sr-only">
-                  Message
+                <label htmlFor="anonymousDonation" className="ml-2 block text-sm text-charcoal">
+                  I'd like to donate anonymously
                 </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  placeholder="Message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  rows={3}
-                  className="block w-full border-gray-300 rounded-md border p-2 focus:ring-sea-green focus:border-sea-green"
-                />
               </div>
             </div>
 
@@ -329,22 +331,6 @@ export default function DonatePage() {
                 />
                 <label htmlFor="creditCard" className="ml-2 block text-sm text-charcoal">
                   Credit Card
-                  <span className="ml-2">
-                    <Image
-                      src="/placeholder.svg?height=24&width=60"
-                      alt="Visa"
-                      width={30}
-                      height={12}
-                      className="inline-block"
-                    />
-                    <Image
-                      src="/placeholder.svg?height=24&width=60"
-                      alt="Mastercard"
-                      width={30}
-                      height={12}
-                      className="inline-block ml-1"
-                    />
-                  </span>
                 </label>
               </div>
 
@@ -375,6 +361,10 @@ export default function DonatePage() {
                 type="button"
                 onClick={nextStep}
                 className="bg-sea-green text-white px-6 py-3 rounded-md hover:bg-spring-green font-montserrat"
+                disabled={
+                  !formData.anonymousDonation &&
+                  (!formData.name.trim() || !formData.email.trim())
+                }
               >
                 {paymentMethod === "direct" ? "Complete Donation" : "Go to Payment"}
               </button>

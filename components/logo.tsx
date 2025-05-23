@@ -8,12 +8,12 @@ interface LogoProps {
 export default function Logo({ className = "" }: LogoProps) {
   return (
     <Link href="/" className={`block ${className}`}>
-      <div className="relative h-28 w-auto">
+      <div className="relative h-44 w-auto">
         <Image
           src="/images/logo.png"
           alt="Millars Beach Conservation Trust Logo"
-          width={140}
-          height={140}
+          width={180}
+          height={180}
           className="h-full w-auto object-contain"
           priority
         />

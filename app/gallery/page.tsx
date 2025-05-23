@@ -1,25 +1,14 @@
 import SiteHeader from "@/components/site-header"
 import SiteFooter from "@/components/site-footer"
 import AudioPlayer from "@/components/audio-player"
-import { getAllGalleryImages } from "@/lib/api"
-import { CategoryFilter } from "@/components/category-filter"
 import StaticGallery from "@/components/static-gallery"
 
-export default async function GalleryPage() {
-  // Fetch images server-side
-  let images = []
-  try {
-    images = (await getAllGalleryImages()) || []
-  } catch (error) {
-    console.error("Error fetching gallery images:", error)
-    // Continue with empty array if there's an error
-  }
-
-  // Local images and videos to display before CMS content is added
+export default function GalleryPage() {
+  // Local images and videos to display
   const localMedia = [
     {
       id: "local-1",
-      type: "image",
+      type: "image" as const,
       src: "/images/greenhood-orchid.jpeg",
       alt: "Native Greenhood Orchid",
       caption: "Native Greenhood Orchid found in the conservation area",
@@ -27,7 +16,7 @@ export default async function GalleryPage() {
     },
     {
       id: "local-2",
-      type: "image",
+      type: "image" as const,
       src: "/images/paterson-inlet-sunrise.jpeg",
       alt: "Sunrise at Paterson Inlet",
       caption: "Beautiful sunrise view through native bush at Paterson Inlet",
@@ -35,7 +24,7 @@ export default async function GalleryPage() {
     },
     {
       id: "local-3",
-      type: "image",
+      type: "image" as const,
       src: "/images/kiwi-footprints.jpeg",
       alt: "Kiwi footprints in the sand",
       caption: "Kiwi footprints found on the beach near the conservation area",
@@ -43,7 +32,7 @@ export default async function GalleryPage() {
     },
     {
       id: "local-4",
-      type: "video",
+      type: "video" as const,
       src: "/videos/VID_Kiwi01.mp4",
       thumbnail: "/images/Image of kiwi.jpg",
       alt: "VID_Kiwi01",
@@ -52,7 +41,7 @@ export default async function GalleryPage() {
     },
     {
       id: "local-5",
-      type: "video",
+      type: "video" as const,
       src: "/videos/Drone_Point2Millars.mov",
       thumbnail: "/images/aerial-drone-view.jpeg",
       alt: "Aerial drone footage over Millars Point",
@@ -61,7 +50,7 @@ export default async function GalleryPage() {
     },
     {
       id: "local-6",
-      type: "video",
+      type: "video" as const,
       src: "/videos/Stewart island Robin.mov",
       thumbnail: "/images/stewart-island-robin-hero.webp",
       alt: "Stewart Island Robin foraging",
@@ -89,8 +78,8 @@ export default async function GalleryPage() {
           />
         </div>
 
-        {/* Display images from Sanity if available, otherwise show local images */}
-        {images.length > 0 ? <CategoryFilter images={images} /> : <StaticGallery images={localMedia} />}
+        {/* Only show local images/videos */}
+        <StaticGallery images={localMedia} />
       </main>
 
       {/* Footer */}

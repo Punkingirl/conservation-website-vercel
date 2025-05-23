@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'media_gallery',
     'blog',
     'core',
+    'contact.apps.ContactConfig',
 ]
 
 MIDDLEWARE = [
@@ -137,11 +138,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 CORS_ALLOW_ALL_ORIGINS = True  # For development only; restrict in production
 
 # Email settings
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # For development
-# For production, use SMTP settings:
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
-# EMAIL_HOST_USER = 'your-email@gmail.com'
-# EMAIL_HOST_PASSWORD = 'your-app-password'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # Or your SMTP server
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'sophiagg712@gmail.com'  # Replace with your email
+EMAIL_HOST_PASSWORD = 'domm uidf xllc dgdo'  # Replace with your app password
+DEFAULT_FROM_EMAIL = 'sophiagg712@gmail.com'  # Replace with your email
+ADMIN_EMAIL = 'sophiagg712@gmail.com'  # Replace with admin email

@@ -6,15 +6,7 @@ export default function SiteFooter() {
   return (
     <footer className="bg-white border-t border-gray-200">
       <div className="max-w-6xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Logo and Mission */}
-          <div className="md:col-span-1 flex flex-col items-center">
-            <Logo className="mb-6" />
-            <p className="text-sm text-gray-600 text-center">
-              Dedicated to the conservation and restoration of Millars Beach Peninsula's natural environment.
-            </p>
-          </div>
-
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Quick Links */}
           <div>
             <h3 className="font-montserrat font-bold text-dark-green mb-4">Quick Links</h3>
