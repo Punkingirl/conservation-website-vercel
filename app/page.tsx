@@ -210,7 +210,7 @@ export default function Home() {
               we're working to protect.
             </p>
             <Link
-              href="/about#kiwi-footage"
+              href="/gallery"
               className="bg-sea-green hover:bg-spring-green text-white px-6 py-3 rounded-md font-medium transition-colors inline-block"
             >
               See Our Wildlife

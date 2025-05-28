@@ -205,39 +205,55 @@ export default function DonatePage() {
             <h2 className="text-2xl font-bold mb-6 font-montserrat text-dark-green">Enter your details</h2>
 
             <div className="space-y-4">
-              {/* Name (required) */}
+              {/* Title (optional, now first) */}
               <div>
+                <label htmlFor="title" className="block text-sm font-medium text-charcoal mb-1">
+                    Title
+                  </label>
+                  <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    placeholder="Title"
+                    value={formData.title}
+                    onChange={handleInputChange}
+                    className="block w-full border-gray-300 rounded-md border p-2 focus:ring-sea-green focus:border-sea-green"
+                  />
+                </div>
+
+              {/* Name (required) */}
+                <div>
                 <label htmlFor="name" className="block text-sm font-medium text-charcoal mb-1">
                   Name <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
+                  </label>
+                  <input
+                    type="text"
                   id="name"
                   name="name"
                   placeholder="Your Name"
                   value={formData.name || ''}
-                  onChange={handleInputChange}
-                  className="block w-full border-gray-300 rounded-md border p-2 focus:ring-sea-green focus:border-sea-green"
-                  required
-                />
+                    onChange={handleInputChange}
+                    className="block w-full border-gray-300 rounded-md border p-2 focus:ring-sea-green focus:border-sea-green"
+                    required
+                  />
               </div>
 
               {/* Email (required) */}
-              <div>
+                <div>
                 <label htmlFor="email" className="block text-sm font-medium text-charcoal mb-1">
                   Email Address <span className="text-red-500">*</span>
-                </label>
-                <input
+                  </label>
+                  <input
                   type="email"
                   id="email"
                   name="email"
                   placeholder="Email Address"
                   value={formData.email || ''}
-                  onChange={handleInputChange}
-                  className="block w-full border-gray-300 rounded-md border p-2 focus:ring-sea-green focus:border-sea-green"
-                  required
-                />
-              </div>
+                    onChange={handleInputChange}
+                    className="block w-full border-gray-300 rounded-md border p-2 focus:ring-sea-green focus:border-sea-green"
+                    required
+                  />
+                </div>
 
               {/* Message (optional) */}
               <div>
@@ -255,22 +271,8 @@ export default function DonatePage() {
                 />
               </div>
 
-              {/* Optional fields */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-                <div>
-                  <label htmlFor="title" className="block text-sm font-medium text-charcoal mb-1">
-                    Title
-                  </label>
-                  <input
-                    type="text"
-                    id="title"
-                    name="title"
-                    placeholder="Title"
-                    value={formData.title}
-                    onChange={handleInputChange}
-                    className="block w-full border-gray-300 rounded-md border p-2 focus:ring-sea-green focus:border-sea-green"
-                  />
-                </div>
+              {/* Optional fields (phone, address) */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium text-charcoal mb-1">
                     Phone
@@ -285,19 +287,19 @@ export default function DonatePage() {
                     className="block w-full border-gray-300 rounded-md border p-2 focus:ring-sea-green focus:border-sea-green"
                   />
                 </div>
-                <div>
+              <div>
                   <label htmlFor="address" className="block text-sm font-medium text-charcoal mb-1">
-                    Address
-                  </label>
-                  <input
-                    type="text"
-                    id="address"
-                    name="address"
-                    placeholder="Search for your address"
-                    value={formData.address}
-                    onChange={handleInputChange}
-                    className="block w-full border-gray-300 rounded-md border p-2 focus:ring-sea-green focus:border-sea-green"
-                  />
+                  Address
+                </label>
+                <input
+                  type="text"
+                  id="address"
+                  name="address"
+                  placeholder="Search for your address"
+                  value={formData.address}
+                  onChange={handleInputChange}
+                  className="block w-full border-gray-300 rounded-md border p-2 focus:ring-sea-green focus:border-sea-green"
+                />
                 </div>
               </div>
 
