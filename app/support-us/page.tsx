@@ -134,11 +134,11 @@ export default function SupportUsPage() {
                       className="flex-shrink-0"
                     >
                       <Image
-                        src="/images/give-a-trap-logo.png"
+                        src="/images/giveATrapLogo.png"
                         alt="Give a Trap Logo"
-                        width={150}
-                        height={150}
-                        className="rounded-md hover:opacity-90 transition-opacity"
+                        width={120}
+                        height={120}
+                        className="mx-auto mb-4"
                       />
                     </a>
                   </div>
@@ -189,7 +189,7 @@ export default function SupportUsPage() {
                   </p>
                 </div>
 
-                <div>
+                <div className="mb-8">
                   <h4 className="text-xl font-bold text-dark-green mb-4 font-montserrat flex items-center">
                     <MapPin className="mr-2 h-5 w-5" /> Professional Expertise
                   </h4>
@@ -213,37 +213,6 @@ export default function SupportUsPage() {
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* Newsletter Signup - Updated to full width */}
-          <div className="w-full bg-gray-50 p-8 rounded-lg shadow-md">
-            <h3 className="text-2xl font-bold text-dark-green mb-4 text-center font-montserrat">Stay Updated</h3>
-            <p className="text-center mb-6 text-charcoal">
-              Subscribe to our newsletter to receive updates on our conservation progress, upcoming volunteer
-              opportunities, and ways to get involved.
-            </p>
-
-            <form onSubmit={handleSubscribe} className="max-w-2xl mx-auto">
-              <div className="flex flex-col sm:flex-row gap-3">
-                <input
-                  type="email"
-                  placeholder="Your Email Address"
-                  className="flex-1 border border-gray-300 rounded-md px-4 py-2 focus:ring-sea-green focus:border-sea-green"
-                  value={email}
-                  onChange={handleEmailChange}
-                  required
-                />
-                <button
-                  type="submit"
-                  className="bg-dark-green hover:bg-spring-green text-white px-6 py-2 rounded-md font-medium transition-colors"
-                >
-                  Subscribe
-                </button>
-              </div>
-              <p className="text-sm text-gray-500 mt-3 text-center">
-                We respect your privacy and will never share your information with third parties.
-              </p>
-            </form>
           </div>
         </div>
       </main>

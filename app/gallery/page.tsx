@@ -1,25 +1,17 @@
 import SiteHeader from "@/components/site-header"
 import SiteFooter from "@/components/site-footer"
 import AudioPlayer from "@/components/audio-player"
-import { getAllGalleryImages } from "@/lib/api"
-import { CategoryFilter } from "@/components/category-filter"
 import StaticGallery from "@/components/static-gallery"
 
-export default async function GalleryPage() {
-  // Fetch images server-side
-  let images = []
-  try {
-    images = (await getAllGalleryImages()) || []
-  } catch (error) {
-    console.error("Error fetching gallery images:", error)
-    // Continue with empty array if there's an error
-  }
+const apiKey = process.env.TRAPNZ_API_KEY;
+const nodeId = process.env.TRAPNZ_NODE_ID;
 
-  // Local images and videos to display before CMS content is added
+export default function GalleryPage() {
+  // Local images and videos to display
   const localMedia = [
     {
       id: "local-1",
-      type: "image",
+      type: "image" as const,
       src: "/images/greenhood-orchid.jpeg",
       alt: "Native Greenhood Orchid",
       caption: "Native Greenhood Orchid found in the conservation area",
@@ -27,7 +19,7 @@ export default async function GalleryPage() {
     },
     {
       id: "local-2",
-      type: "image",
+      type: "image" as const,
       src: "/images/paterson-inlet-sunrise.jpeg",
       alt: "Sunrise at Paterson Inlet",
       caption: "Beautiful sunrise view through native bush at Paterson Inlet",
@@ -35,7 +27,7 @@ export default async function GalleryPage() {
     },
     {
       id: "local-3",
-      type: "image",
+      type: "image" as const,
       src: "/images/kiwi-footprints.jpeg",
       alt: "Kiwi footprints in the sand",
       caption: "Kiwi footprints found on the beach near the conservation area",
@@ -43,11 +35,29 @@ export default async function GalleryPage() {
     },
     {
       id: "local-4",
-      type: "video",
-      src: "/videos/kiwi-video.mp4",
-      thumbnail: "/images/kiwi-footprints.jpeg", // Using the footprints image as a thumbnail
-      alt: "Kiwi in the wild",
-      caption: "Rare footage of a kiwi foraging in its natural habitat",
+      type: "video" as const,
+      src: "/videos/VID_Kiwi01.mp4",
+      thumbnail: "/images/Image of kiwi.jpg",
+      alt: "VID_Kiwi01",
+      caption: "Kiwi foraging, captured on camera in the conservation area",
+      category: "wildlife",
+    },
+    {
+      id: "local-5",
+      type: "video" as const,
+      src: "/videos/Drone_Point2Millars.mov",
+      thumbnail: "/images/aerial-drone-view.jpeg",
+      alt: "Aerial drone footage over Millars Point",
+      caption: "Aerial drone footage over Millars Point, showcasing the stunning landscape and conservation area.",
+      category: "landscape",
+    },
+    {
+      id: "local-6",
+      type: "video" as const,
+      src: "/videos/Stewart island Robin.mov",
+      thumbnail: "/images/stewart-island-robin-hero.webp",
+      alt: "Stewart Island Robin foraging",
+      caption: "Charming Stewart Island Robin foraging in the undergrowth, a rare sight in the wild.",
       category: "wildlife",
     },
   ]
@@ -57,7 +67,7 @@ export default async function GalleryPage() {
       {/* Navigation */}
       <SiteHeader currentPath="/gallery" />
 
-      <main className="max-w-6xl mx-auto bg-white">
+      <main className="max-w-6xl mx-auto bg-white pb-8">
         {/* Page Title */}
         <div className="text-center my-8">
           <h1 className="text-4xl font-bold uppercase tracking-wider">Gallery</h1>
@@ -66,14 +76,13 @@ export default async function GalleryPage() {
         {/* Audio Feature */}
         <div className="mb-8 px-6">
           <AudioPlayer
-            audioSrc="https://assets.mixkit.co/sfx/preview/mixkit-forest-birds-ambience-1210.mp3"
-            fallbackSrc="https://assets.mixkit.co/sfx/preview/mixkit-morning-birds-singing-in-the-forest-2457.mp3"
-            label="Listen to our birdsong"
+            audioSrc="/audios/Tui_Bellbird_Kaka.mov"
+            label="Listen to our Tui, Bellbird & Kaka Calls"
           />
         </div>
 
-        {/* Display images from Sanity if available, otherwise show local images */}
-        {images.length > 0 ? <CategoryFilter images={images} /> : <StaticGallery images={localMedia} />}
+        {/* Only show local images/videos */}
+        <StaticGallery images={localMedia} />
       </main>
 
       {/* Footer */}

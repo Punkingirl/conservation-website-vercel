@@ -5,20 +5,44 @@ import { format } from "date-fns"
 import SiteHeader from "@/components/site-header"
 import SiteFooter from "@/components/site-footer"
 
+type Block = {
+  _type: string;
+  style?: string;
+  children?: { _type: string; text: string }[];
+  asset?: { _ref: string };
+  alt?: string;
+  caption?: string;
+};
+
+type BlogPost = {
+  _id: string;
+  title: string;
+  slug: { current: string };
+  publishedAt: string;
+  content: Block[];
+  coverImage: string;
+  category: string;
+  author: {
+    name: string;
+    avatar?: string;
+    bio: string;
+  };
+};
+
 // Mock blog post content for three focused posts
-const mockBlogPosts = {
+const mockBlogPosts: { [key: string]: BlogPost } = {
   "kiwi-population-recovery": {
     _id: "post-1",
     title: "Kiwi Population Shows Promising Signs of Recovery",
     slug: { current: "kiwi-population-recovery" },
-    publishedAt: "2023-11-15T09:00:00Z",
+    publishedAt: "2025-02-01T09:00:00Z",
     content: [
       {
         _type: "block",
         children: [
           {
             _type: "span",
-            text: "Recent monitoring efforts have revealed a 15% increase in kiwi sightings across the Millars Beach Peninsula, suggesting our predator control measures are having a positive impact on the local kiwi population.",
+            text: "Recent monitoring efforts have revealed encouraging signs for New Zealand's iconic kiwi population, with a significant increase in kiwi sightings across the Millars Beach Peninsula. These positive trends suggest our comprehensive predator control measures are having a meaningful impact on local kiwi populations.",
           },
         ],
       },
@@ -27,16 +51,7 @@ const mockBlogPosts = {
         children: [
           {
             _type: "span",
-            text: "The North Island brown kiwi (Apteryx mantelli) is one of New Zealand's most iconic and endangered native birds. With an estimated population decline of 2-3% annually across New Zealand, any sign of population recovery is significant for conservation efforts.",
-          },
-        ],
-      },
-      {
-        _type: "block",
-        children: [
-          {
-            _type: "span",
-            text: "Our team has been conducting regular night surveys and tracking tunnel monitoring since the inception of the Millars Beach Restoration Project. The data collected over the past 18 months shows a clear correlation between our intensive predator control program and increased kiwi activity.",
+            text: "The North Island brown kiwi (Apteryx mantelli), one of New Zealand's most beloved native birds, has faced serious threats across the country. While national populations had been declining at an estimated rate of 2-3% annually across New Zealand, targeted conservation areas are now showing remarkable recovery.",
           },
         ],
       },
@@ -55,7 +70,7 @@ const mockBlogPosts = {
         children: [
           {
             _type: "span",
-            text: "• 15% increase in kiwi call rates during standardized listening surveys\n• 23% increase in kiwi footprint detections in tracking tunnels\n• First confirmed kiwi nesting site discovered in the eastern section of the peninsula\n• Two juvenile kiwi spotted, suggesting successful breeding",
+            text: "• 15% increase in kiwi call rates during standardized listening surveys\n• 23% increase in kiwi footprint detections in tracking tunnels\n• First confirmed kiwi nesting site discovered in the eastern section of the peninsula\n• Two juvenile kiwi observed, suggesting successful breeding",
           },
         ],
       },
@@ -64,15 +79,9 @@ const mockBlogPosts = {
         children: [
           {
             _type: "span",
-            text: "According to our team's observations: \"The presence of juvenile kiwi is particularly encouraging. It indicates that not only are adult kiwi surviving, but they're successfully reproducing and raising chicks to a stage where they can survive independently. This is a critical indicator of a recovering population.\"",
+            text: 'According to our field researchers: "The presence of juvenile kiwi is particularly encouraging as it indicates not only are adult kiwi surviving, but they\'re successfully reproducing and raising chicks to independence. This is a critical indicator of population recovery."',
           },
         ],
-      },
-      {
-        _type: "image",
-        asset: { _ref: "kiwi-video-still" },
-        alt: "Still image from night vision camera showing a kiwi foraging",
-        caption: "Night vision camera footage captured a kiwi foraging near one of our monitoring stations",
       },
       {
         _type: "block",
@@ -89,7 +98,7 @@ const mockBlogPosts = {
         children: [
           {
             _type: "span",
-            text: "The increase in kiwi activity correlates directly with our predator control efforts. Since implementing our comprehensive trapping network:",
+            text: "The increase in kiwi activity correlates directly with our intensive predator control efforts. Since implementing our comprehensive trapping network:",
           },
         ],
       },
@@ -107,35 +116,7 @@ const mockBlogPosts = {
         children: [
           {
             _type: "span",
-            text: "These results highlight the effectiveness of our approach and the importance of sustained predator control efforts. The reduction in predator numbers creates a safer environment for kiwi, particularly vulnerable chicks and juveniles.",
-          },
-        ],
-      },
-      {
-        _type: "block",
-        style: "h2",
-        children: [
-          {
-            _type: "span",
-            text: "Looking Forward",
-          },
-        ],
-      },
-      {
-        _type: "block",
-        children: [
-          {
-            _type: "span",
-            text: "While these results are encouraging, we recognize that conservation is a long-term commitment. Our team is now working on expanding the predator control network to cover the entire peninsula, which we expect will further benefit not only kiwi but all native wildlife in the area.",
-          },
-        ],
-      },
-      {
-        _type: "block",
-        children: [
-          {
-            _type: "span",
-            text: "This success would not be possible without the dedication of our volunteers and the generous support of our donors. Every trap checked, every bait station refilled, and every dollar contributed makes a tangible difference to the survival of these remarkable birds.",
+            text: "These results highlight the effectiveness of our approach and the importance of sustained predator control. The reduction in predator numbers creates a safer environment for kiwi, particularly vulnerable chicks and juveniles.",
           },
         ],
       },
@@ -176,35 +157,48 @@ const mockBlogPosts = {
           },
         ],
       },
+      {
+        _type: "block",
+        style: "h2",
+        children: [
+          {
+            _type: "span",
+            text: "References",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        children: [
+          {
+            _type: "span",
+            text: "• Save the Kiwi. (2024, April 28). Kiwi population grows by 7,000 - what we need to do to ensure that growth doesn't go backwards. https://savethekiwi.nz/kiwi-population-grows-by-7000-but-is-that-growth-about-to-go-backwards/\n• Predator Free NZ Trust. (2024, December 2). Running out of space: kiwi translocations. https://predatorfreenz.org/stories/running-out-of-space-kiwi-translocations/",
+          },
+        ],
+      },
     ],
     coverImage: "/images/kiwi-footprints.jpeg",
     category: "Wildlife",
     author: {
       name: "Andy Marshall",
-      avatar: "/stylized-letter-st.png",
+      avatar: "/images/fern.gif",
       bio: "Conservation Project Manager at Millars Beach Conservation Trust",
     },
   },
   "volunteer-weekend-trap-installation": {
     _id: "post-2",
-    title: "Volunteer Weekend: 20 New Traps Installed",
+    title: "Volunteer Weekend: 20 New Traps Installed to Boost Kiwi Protection",
     slug: { current: "volunteer-weekend-trap-installation" },
-    publishedAt: "2023-10-28T14:30:00Z",
+    publishedAt: "2025-03-25T09:00:00Z",
     content: [
       {
         _type: "block",
         children: [
           {
             _type: "span",
-            text: "Last weekend, a dedicated team of 15 volunteers braved challenging weather conditions to install 20 new predator traps, significantly expanding our network to cover the western section of the Millars Beach Peninsula.",
+            text: "Last weekend, a dedicated team of 15 volunteers braved challenging weather conditions to install 20 new predator traps, significantly expanding our network to cover the western section of the Millars Beach Peninsula. This expansion represents a crucial step in our ongoing efforts to create a safer environment for native wildlife, including our recovering kiwi population.",
           },
         ],
-      },
-      {
-        _type: "image",
-        asset: { _ref: "conservation-volunteers-field" },
-        alt: "Volunteers checking trap markers in the native forest",
-        caption: "Volunteers documenting trap locations and checking markers during our recent installation day",
       },
       {
         _type: "block",
@@ -221,7 +215,16 @@ const mockBlogPosts = {
         children: [
           {
             _type: "span",
-            text: "The new traps are part of our Phase 2 expansion, which aims to extend predator control to the western third of the peninsula. This area contains valuable habitat for several native bird species, including tūī, bellbird, and the South Island robin.",
+            text: "The new traps are part of our Phase 2 expansion, which aims to extend predator control to the western third of the peninsula. This area contains valuable habitat for several native bird species, including tūī, bellbird, and the South Island robin, as well as potential kiwi territory.",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        children: [
+          {
+            _type: "span",
+            text: '"Expanding our trapping network is critical for creating a continuous predator-controlled area," explains our lead trapping coordinator. "Predators like stoats can travel long distances, so any gaps in coverage can undermine the effectiveness of our conservation efforts."',
           },
         ],
       },
@@ -246,6 +249,52 @@ const mockBlogPosts = {
       },
       {
         _type: "block",
+        children: [
+          {
+            _type: "span",
+            text: "The DOC200 traps are designed specifically to target stoats, rats, and hedgehogs - all significant threats to kiwi. These humane kill traps are set within wooden boxes to protect native birds while effectively eliminating introduced predators.",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        children: [
+          {
+            _type: "span",
+            text: "The Goodnature A24 traps represent the latest in predator control technology, with self-resetting mechanisms that can dispatch up to 24 predators before requiring maintenance. These innovative traps use CO2 canisters to power a piston that kills the predator instantly when triggered, then automatically resets for the next target.",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        style: "h2",
+        children: [
+          {
+            _type: "span",
+            text: "Monitoring Effectiveness",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        children: [
+          {
+            _type: "span",
+            text: "Each trap has been recorded in our digital tracking system using the Trap.NZ app, which allows volunteers to document catches and maintain traps efficiently. This system will provide valuable data on predator numbers and help us assess the effectiveness of our expanded network.",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        children: [
+          {
+            _type: "span",
+            text: 'First-time volunteer Sarah Thompson shared her experience: "It was incredible to learn about the impact these predators have on our native birds. Setting up the traps was hard work, especially in the rain, but knowing we\'re helping protect kiwi and other native species made it absolutely worthwhile."',
+          },
+        ],
+      },
+      {
+        _type: "block",
         style: "h2",
         children: [
           {
@@ -259,75 +308,68 @@ const mockBlogPosts = {
         children: [
           {
             _type: "span",
-            text: "If you're inspired by what our volunteers accomplished and would like to get involved, we're always looking for more helping hands. Our next volunteer weekend is scheduled for November 25-26. To register your interest, please contact us at millarsbeach@gmail.com or visit our Support Us page.",
+            text: "If you're inspired by what our volunteers accomplished and would like to get involved, we're always looking for more helping hands. Our next volunteer weekend is scheduled for November 25-26, focusing on trap maintenance and monitoring.",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        children: [
+          {
+            _type: "span",
+            text: "No previous experience is necessary – we provide full training in trap setting, safety protocols, and predator identification. To register your interest, please contact us at millarsbeach@gmail.com or visit our Support Us page.",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        children: [
+          {
+            _type: "span",
+            text: "Together, we can continue expanding our predator control network and create a safer environment for our precious native wildlife.",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        style: "h2",
+        children: [
+          {
+            _type: "span",
+            text: "References",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        children: [
+          {
+            _type: "span",
+            text: "• Department of Conservation. (2024, April 17). Replacing traps for a kiwi-friendly future. https://www.doc.govt.nz/news/media-releases/2024-media-releases/replacing-traps-for-a-kiwi-friendly-future/\n• Predator Free NZ Trust. (2024). Get involved in backyard trapping. https://predatorfreenz.org/",
           },
         ],
       },
     ],
-    coverImage: "/conservation-volunteers-field.jpeg",
-    category: "Community",
+    coverImage: "/images/volunteer.jpg",
+    category: "volunteers",
     author: {
-      name: "Andy Marshall",
-      avatar: "/abstract-geometric-mj.png",
-      bio: "Conservation Project Manager at Millars Beach Conservation Trust",
+      name: "Conservation Team",
+      avatar: "/images/fern.gif",
+      bio: "Millars Beach Conservation Trust",
     },
   },
   "phase-3-funding-secured": {
     _id: "post-5",
-    title: "New Funding Secured for Phase 3 Expansion",
+    title: "The Natural Splendor of Millars Beach",
     slug: { current: "phase-3-funding-secured" },
-    publishedAt: "2023-09-10T10:00:00Z",
+    publishedAt: "2025-05-14T09:00:00Z",
     content: [
       {
         _type: "block",
         children: [
           {
             _type: "span",
-            text: "We're thrilled to announce that the Millars Beach Restoration Project has secured significant funding from the Pacific Development and Conservation Trust to support the expansion of our conservation efforts into Phase 3.",
-          },
-        ],
-      },
-      {
-        _type: "block",
-        children: [
-          {
-            _type: "span",
-            text: "This grant of $45,000 will enable us to extend our predator control network to cover the final third of the peninsula, completing our comprehensive approach to pest management across the entire 100-hectare site.",
-          },
-        ],
-      },
-      {
-        _type: "image",
-        asset: { _ref: "funding-announcement" },
-        alt: "Team members receiving the funding check",
-        caption:
-          "Our team receiving the funding confirmation from Pacific Development and Conservation Trust representatives",
-      },
-      {
-        _type: "block",
-        style: "h2",
-        children: [
-          {
-            _type: "span",
-            text: "A Milestone for Conservation",
-          },
-        ],
-      },
-      {
-        _type: "block",
-        children: [
-          {
-            _type: "span",
-            text: "This funding represents a significant milestone in our journey to restore the native ecosystem of Millars Beach Peninsula. With Phases 1 and 2 already showing promising results in terms of reduced pest numbers and increased native wildlife activity, the completion of Phase 3 will create a fully protected sanctuary for our precious native species.",
-          },
-        ],
-      },
-      {
-        _type: "block",
-        children: [
-          {
-            _type: "span",
-            text: '"This grant is transformative for our project," says Jessica Lord, Project Director. "It allows us to complete our vision of comprehensive predator control across the entire peninsula, creating a safe haven for native wildlife to thrive. We\'re incredibly grateful to the Pacific Development and Conservation Trust for their support and belief in our work."',
+            text: "Nestled along New Zealand's coastline, Millars Beach offers visitors a remarkable glimpse into our country's natural heritage. This hidden gem combines diverse ecosystems, stunning vistas, and abundant wildlife in one accessible location.",
           },
         ],
       },
@@ -337,7 +379,7 @@ const mockBlogPosts = {
         children: [
           {
             _type: "span",
-            text: "What Phase 3 Will Deliver",
+            text: "Where Forest Meets Sea",
           },
         ],
       },
@@ -346,7 +388,7 @@ const mockBlogPosts = {
         children: [
           {
             _type: "span",
-            text: "The Phase 3 expansion will include:",
+            text: "What makes Millars Beach truly special is the seamless transition from dense native forest to pristine shoreline. Walking the coastal track, visitors experience multiple ecosystems within a short distance – from coastal dunes with specialized salt-tolerant plants, through regenerating podocarp forest, to mature rimu and tōtara stands inland.",
           },
         ],
       },
@@ -355,50 +397,7 @@ const mockBlogPosts = {
         children: [
           {
             _type: "span",
-            text: "• Installation of 40 additional predator traps in the northwestern section of the peninsula\n• Creation of 3km of new trap lines and access tracks\n• Deployment of 15 monitoring stations to track wildlife recovery\n• Purchase of essential equipment for volunteer trap checkers\n• Training workshops for new volunteers",
-          },
-        ],
-      },
-      {
-        _type: "block",
-        children: [
-          {
-            _type: "span",
-            text: "This comprehensive approach will create a continuous network of predator control across the entire peninsula, significantly reducing the risk of reinvasion and creating a more effective sanctuary for native wildlife.",
-          },
-        ],
-      },
-      {
-        _type: "image",
-        asset: { _ref: "phase-3-map" },
-        alt: "Map showing the Phase 3 expansion area",
-        caption: "Map of the peninsula showing the Phase 3 expansion area (highlighted in green)",
-      },
-      {
-        _type: "block",
-        style: "h2",
-        children: [
-          {
-            _type: "span",
-            text: "Timeline and Implementation",
-          },
-        ],
-      },
-      {
-        _type: "block",
-        children: [
-          {
-            _type: "span",
-            text: "Work on Phase 3 will begin in October 2023 with track cutting and marking. Trap installation is scheduled for November and December, with the full network expected to be operational by January 2024.",
-          },
-        ],
-      },
-      {
-        _type: "block",
-        children: [
-          {
-            _type: "span",
-            text: "We'll be organizing several volunteer weekends throughout this period to help with various aspects of the implementation. These events provide a wonderful opportunity for community members to get involved and contribute directly to conservation efforts.",
+            text: "The meeting of land and sea creates dramatic scenery, with pōhutukawa trees clinging to rocky outcrops. During summer, their crimson blooms create a stunning display against the turquoise waters below.",
           },
         ],
       },
@@ -408,7 +407,7 @@ const mockBlogPosts = {
         children: [
           {
             _type: "span",
-            text: "The Bigger Picture",
+            text: "Rich Biodiversity",
           },
         ],
       },
@@ -417,7 +416,7 @@ const mockBlogPosts = {
         children: [
           {
             _type: "span",
-            text: "The Millars Beach Restoration Project is part of the broader Predator Free Rakiura 2050 initiative, which aims to eliminate introduced predators from Stewart Island/Rakiura. Our work on the peninsula serves as a valuable case study for predator control in similar coastal forest environments.",
+            text: "The peninsula hosts over 400 indigenous plant species, including several rare and endangered varieties. The forest understory reveals treasures like delicate ferns, ground orchids, and native clematis that fills the air with sweet scent in spring.",
           },
         ],
       },
@@ -426,7 +425,7 @@ const mockBlogPosts = {
         children: [
           {
             _type: "span",
-            text: "By demonstrating effective predator control and monitoring the subsequent recovery of native species, we're contributing valuable data and insights to the wider conservation community in New Zealand.",
+            text: "A highlight is the eastern fern gully, where ancient tree ferns create a prehistoric atmosphere with their massive fronds forming a natural cathedral overhead. The small stream running through this section connects the forest ecosystem to the sea, providing habitat for native freshwater species.",
           },
         ],
       },
@@ -436,7 +435,7 @@ const mockBlogPosts = {
         children: [
           {
             _type: "span",
-            text: "Thank You to Our Supporters",
+            text: "Changing Seasons",
           },
         ],
       },
@@ -445,7 +444,7 @@ const mockBlogPosts = {
         children: [
           {
             _type: "span",
-            text: "This achievement would not be possible without the ongoing support of our volunteers, donors, and partners. We extend our heartfelt thanks to everyone who has contributed to the project so far, whether through volunteering time, providing financial support, or offering expertise and guidance.",
+            text: "Each season brings distinct transformations to Millars Beach:",
           },
         ],
       },
@@ -454,7 +453,17 @@ const mockBlogPosts = {
         children: [
           {
             _type: "span",
-            text: "Special thanks go to the Pacific Development and Conservation Trust for this significant grant, as well as to our existing funders: Jobs for Nature, Environment Southland, and the Murihiku Rūnaka and Rio Tinto / NZAS Community Development Fund.",
+            text: "• Spring: An explosion of new growth and birdsong, with tūī and bellbirds feeding on flowering kōwhai trees\n• Summer: Coastal pōhutukawa trees burst into brilliant red bloom, while sheltered coves offer perfect swimming spots\n• Autumn: Subtle color changes and fascinating fungi emerging on forest floors\n• Winter: Dramatic seas crash against coastal rocks, while clear days offer the sharpest views to distant islands",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        style: "h2",
+        children: [
+          {
+            _type: "span",
+            text: "Stars and Silence",
           },
         ],
       },
@@ -463,28 +472,104 @@ const mockBlogPosts = {
         children: [
           {
             _type: "span",
-            text: "Together, we're making a tangible difference to the conservation of Millars Beach Peninsula and contributing to the broader goal of protecting New Zealand's unique biodiversity for future generations.",
+            text: "With minimal light pollution, Millars Beach provides exceptional stargazing opportunities. On clear nights, the Milky Way stretches dramatically across the sky, with the Southern Cross and Magellanic Clouds clearly visible. We're working toward having the area recognized as an official Dark Sky Sanctuary.",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        style: "h2",
+        children: [
+          {
+            _type: "span",
+            text: "Conservation and Beauty",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        children: [
+          {
+            _type: "span",
+            text: "Our conservation work ensures future generations can experience this special place. The healthy forest that provides habitat for kiwi and other native birds also prevents erosion and maintains water quality in streams and coastal areas.",
+          },
+        ],
+      },
+
+      {
+        _type: "block",
+        style: "h2",
+        children: [
+          {
+            _type: "span",
+            text: "Visit and Connect",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        children: [
+          {
+            _type: "span",
+            text: 'Several walking tracks cater to different fitness levels, from the accessible Coastal Loop (30 minutes) to the more challenging Peninsula Circuit (3-4 hours). Our monthly "Forest Connections" guided walks provide insights into the ecology and hidden gems of the area.',
+          },
+        ],
+      },
+      {
+        _type: "block",
+        children: [
+          {
+            _type: "span",
+            text: 'Whether you\'re a passionate naturalist or simply seeking tranquility in a beautiful setting, Millars Beach offers a chance to reconnect with the natural world and experience a piece of New Zealand as it once was.',
+          },
+        ],
+      },
+      {
+        _type: "block",
+        children: [
+          {
+            _type: "span",
+            text: 'To learn more about visiting Millars Beach or to support our conservation work, please visit millarsbeach.nz or contact info@millarsbeach.nz.',
+          },
+        ],
+      },
+      {
+        _type: "block",
+        style: "h2",
+        children: [
+          {
+            _type: "span",
+            text: "References",
+          },
+        ],
+      },
+      {
+        _type: "block",
+        children: [
+          {
+            _type: "span",
+            text: "• Department of Conservation. (2024). Native plants. https://www.doc.govt.nz/nature/native-plants/\n• New Zealand Geographic. (2023). Coastal forests of New Zealand. https://www.nzgeo.com/stories/coastal-forests/",
           },
         ],
       },
     ],
-    coverImage: "/funding-announcement.png",
+    coverImage: "/images/Prices point rocks.jpg",
     category: "News",
     author: {
       name: "Andy Marshall",
-      avatar: "/stylized-jl-logo.png",
+      avatar: "/images/fern.gif",
       bio: "Conservation Project Manager at Millars Beach Conservation Trust",
     },
   },
 }
 
 // Helper function to render content blocks
-const renderContent = (content) => {
-  return content.map((block, index) => {
+const renderContent = (content: Block[]) => {
+  return content.map((block: Block, index: number) => {
     if (block._type === "block") {
       // Handle text blocks
       const style = block.style || "normal"
-      const text = block.children[0].text
+      const text = block.children && block.children[0] ? block.children[0].text : ""
 
       if (style === "h2") {
         return (
@@ -496,10 +581,10 @@ const renderContent = (content) => {
 
       // Handle lists by checking for bullet points
       if (text.includes("• ")) {
-        const items = text.split("• ").filter((item) => item.trim())
+        const items = text.split("• ").filter((item: string) => item.trim())
         return (
           <ul key={index} className="list-disc pl-6 my-4 space-y-2">
-            {items.map((item, i) => (
+            {items.map((item: string, i: number) => (
               <li key={i}>{item.trim()}</li>
             ))}
           </ul>
@@ -519,16 +604,33 @@ const renderContent = (content) => {
       let isKiwiVideoStill = false
 
       // Use actual images if we have them
-      if (block.asset._ref === "kiwi-tracks") {
+      if (block.asset && block.asset._ref === "kiwi-tracks") {
         imgSrc = "/images/kiwi-footprints.jpeg"
-      } else if (block.asset._ref === "kiwi-video-still") {
+      } else if (block.asset && block.asset._ref === "kiwi-video-still") {
         imgSrc = "/kiwi-night-vision.png"
         isKiwiVideoStill = true
-      } else if (block.asset._ref === "conservation-volunteers-field") {
-        imgSrc = "/conservation-volunteers-field.jpeg"
-      } else if (block.asset._ref === "funding-announcement") {
+      } else if (block.asset && block.asset._ref === "conservation-volunteers-field") {
+        imgSrc = "/volunteer.jpg"
+        // Set custom size for this image
+        return (
+          <div key={index} className="my-6">
+            <div>
+              <Image
+                src={imgSrc || "/placeholder.svg"}
+                alt={block.alt || "Blog post image"}
+                width={500}
+                height={300}
+                className="rounded-lg"
+              />
+              {block.caption && (
+                <div className="text-center text-sm text-gray-600 mt-2">{block.caption}</div>
+              )}
+            </div>
+          </div>
+        )
+      } else if (block.asset && block.asset._ref === "funding-announcement") {
         imgSrc = "/funding-announcement.png"
-      } else if (block.asset._ref === "phase-3-map") {
+      } else if (block.asset && block.asset._ref === "phase-3-map") {
         imgSrc = "/phase-3-map.png"
       }
 
@@ -611,13 +713,13 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
 
         {/* Cover Image - with special styling for kiwi post */}
         {post.coverImage && (
-          <div className={`mb-8 ${isKiwiPost ? "flex justify-center" : ""}`}>
+          <div className={`mb-8 ${isKiwiPost ? "flex justify-center" : post.slug.current === "volunteer-weekend-trap-installation" ? "flex justify-center" : ""}`}>
             <Image
               src={post.coverImage || "/placeholder.svg"}
               alt={post.title}
-              width={isKiwiPost ? 600 : 1200}
-              height={isKiwiPost ? 400 : 600}
-              className={`rounded-lg ${isKiwiPost ? "w-auto max-w-md" : "w-full"}`}
+              width={isKiwiPost ? 500 : post.slug.current === "volunteer-weekend-trap-installation" ? 700 : 1200}
+              height={isKiwiPost ? 300 : post.slug.current === "volunteer-weekend-trap-installation" ? 420 : 600}
+              className={`rounded-lg ${isKiwiPost ? "w-auto max-w-md" : post.slug.current === "volunteer-weekend-trap-installation" ? "w-auto" : "w-full"}`}
             />
           </div>
         )}

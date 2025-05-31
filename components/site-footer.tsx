@@ -5,16 +5,8 @@ import Logo from "./logo"
 export default function SiteFooter() {
   return (
     <footer className="bg-white border-t border-gray-200">
-      <div className="max-w-6xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Logo and Mission */}
-          <div className="md:col-span-1">
-            <Logo className="h-10 mb-4" />
-            <p className="text-sm text-gray-600 mt-4">
-              Dedicated to the conservation and restoration of Millars Beach Peninsula's natural environment.
-            </p>
-          </div>
-
+      <div className="max-w-6xl mx-auto px-6 py-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Quick Links */}
           <div>
             <h3 className="font-montserrat font-bold text-dark-green mb-4">Quick Links</h3>

@@ -8,50 +8,50 @@ interface SiteHeaderProps {
 
 export default function SiteHeader({ currentPath = "" }: SiteHeaderProps) {
   return (
-    <nav className="flex items-center justify-between p-6 bg-white border-b border-cambridge-blue">
-      <Logo className="h-10" />
+    <nav className="flex items-center justify-between p-8 bg-white border-b border-cambridge-blue">
+      <Logo />
       <div className="hidden md:flex items-center space-x-6">
         <Link
           href="/"
-          className={`hover:text-sea-green ${currentPath === "/" ? "font-medium text-dark-green" : "text-charcoal"}`}
+          className={`${currentPath === "/" ? "font-bold text-spring-green underline underline-offset-4" : "text-charcoal hover:text-sea-green"}`}
         >
           Home
         </Link>
         <Link
           href="/about"
-          className={`hover:text-sea-green ${currentPath === "/about" ? "font-medium text-dark-green" : "text-charcoal"}`}
+          className={`${currentPath === "/about" ? "font-bold text-spring-green underline underline-offset-4" : "text-charcoal hover:text-sea-green"}`}
         >
           About
         </Link>
         <Link
           href="/support-us"
-          className={`hover:text-sea-green ${currentPath === "/support-us" ? "font-medium text-dark-green" : "text-charcoal"}`}
+          className={`${currentPath === "/support-us" ? "font-bold text-spring-green underline underline-offset-4" : "text-charcoal hover:text-sea-green"}`}
         >
           Support us
         </Link>
         <Link
           href="/gallery"
-          className={`hover:text-sea-green ${currentPath === "/gallery" ? "font-medium text-dark-green" : "text-charcoal"}`}
+          className={`${currentPath === "/gallery" ? "font-bold text-spring-green underline underline-offset-4" : "text-charcoal hover:text-sea-green"}`}
         >
           Gallery
         </Link>
         <Link
           href="/blog"
-          className={`hover:text-sea-green ${currentPath === "/blog" ? "font-medium text-dark-green" : "text-charcoal"}`}
+          className={`${currentPath === "/blog" ? "font-bold text-spring-green underline underline-offset-4" : "text-charcoal hover:text-sea-green"}`}
         >
           Blog
         </Link>
         <Link
           href="/contact"
-          className={`hover:text-sea-green ${currentPath === "/contact" ? "font-medium text-dark-green" : "text-charcoal"}`}
+          className={`${currentPath === "/contact" ? "font-bold text-spring-green underline underline-offset-4" : "text-charcoal hover:text-sea-green"}`}
         >
           Contact
         </Link>
       </div>
       <div className="flex items-center space-x-4">
-        <button className="bg-dark-green text-white px-4 py-2 rounded hidden md:block hover:bg-spring-green transition-colors">
+        <Link href="/admin/login" className="bg-dark-green text-white px-4 py-2 rounded hidden md:block hover:bg-spring-green transition-colors">
           Login
-        </button>
+        </Link>
         <MobileNav currentPath={currentPath} />
       </div>
     </nav>

@@ -10,39 +10,39 @@ const mockBlogPosts = [
     _id: "post-1",
     title: "Kiwi Population Shows Promising Signs of Recovery",
     slug: { current: "kiwi-population-recovery" },
-    publishedAt: "2023-11-15T09:00:00Z",
+    publishedAt: "2025-02-01T09:00:00Z",
     excerpt:
       "Recent monitoring efforts have revealed a 15% increase in kiwi sightings across the peninsula, suggesting our predator control measures are having a positive impact.",
     category: "Wildlife",
     author: {
       name: "Andy Marshall",
-      avatar: "/stylized-letter-st.png",
+      avatar: "/images/fern.gif",
     },
   },
   {
     _id: "post-2",
-    title: "Volunteer Weekend: 20 New Traps Installed",
+    title: "Volunteer Weekend: 20 New Traps Installed to Boost Kiwi Protection",
     slug: { current: "volunteer-weekend-trap-installation" },
-    publishedAt: "2023-10-28T14:30:00Z",
+    publishedAt: "2025-03-25T09:00:00Z",
     excerpt:
-      "Our dedicated team of volunteers braved challenging weather to install 20 new predator traps, expanding our network to cover the western section of the peninsula.",
+      "A team of 15 volunteers installed 20 new predator traps in challenging conditions, expanding our network and boosting protection for kiwi and other native wildlife on the Millars Beach Peninsula.",
     category: "Community",
     author: {
-      name: "Andy Marshall",
-      avatar: "/abstract-geometric-mj.png",
+      name: "Conservation Team",
+      avatar: "/images/fern.gif",
     },
   },
   {
-    _id: "post-5",
+    _id: "post-3",
     title: "New Funding Secured for Phase 3 Expansion",
     slug: { current: "phase-3-funding-secured" },
-    publishedAt: "2023-09-10T10:00:00Z",
+    publishedAt: "2025-05-14T09:00:00Z",
     excerpt:
-      "We're thrilled to announce that we've secured additional funding from the Pacific Development and Conservation Trust to support the expansion of our conservation efforts into Phase 3.",
+      "Nestled along New Zealand's coastline, Millars Beach offers visitors a remarkable glimpse into our country's natural heritage. This hidden gem combines diverse ecosystems, stunning vistas, and abundant wildlife in one accessible location.",
     category: "News",
     author: {
       name: "Andy Marshall",
-      avatar: "/stylized-jl-logo.png",
+      avatar: "/images/fern.gif",
     },
   },
 ]
@@ -80,19 +80,19 @@ export default function BlogPage() {
                   <div className="flex items-center justify-between mt-4">
                     <div className="flex items-center">
                       {post.author?.avatar && (
-                        <Image
+                        <img
                           src={post.author.avatar || "/placeholder.svg"}
                           alt={post.author?.name || "Author"}
-                          width={24}
-                          height={24}
-                          className="rounded-full mr-2"
+                          width={48}
+                          height={48}
+                          className="rounded-full mr-2 w-12 h-12"
                         />
                       )}
                       <span className="text-sm text-gray-600">{post.author?.name || "Anonymous"}</span>
                     </div>
 
                     <Link href={`/blog/${post.slug.current}`} className="text-sm font-medium hover:underline">
-                      Read
+                      <span className="inline-block bg-sea-green text-white px-5 py-2 rounded-md text-base font-semibold shadow hover:bg-spring-green transition-colors">Read</span>
                     </Link>
                   </div>
                 </div>

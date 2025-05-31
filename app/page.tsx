@@ -48,13 +48,14 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center mb-8">
             <h2 className="text-3xl font-bold text-dark-green mb-6 font-montserrat">Our Vision</h2>
-            <p className="text-lg text-charcoal leading-relaxed mb-6">
-              We are a family with a vision - to restore our part of Rakiura to thrive the way it was intended - prior
-              to our introduced pests invading.
+            <p className="text-lg text-charcoal leading-relaxed mb-6 font-open-sans">
+              We are a family with a vision - to restore our part of Rakiura to thrive the way it was intended - prior to our introduced pests invading.
             </p>
-            <p className="text-lg text-charcoal leading-relaxed">
-              Our project purpose is to "rejuvenate indigenous flora and fauna on the Peninsula through the heavy
-              suppression of rats, possums, feral cats, and deer, along with eradication of introduced weeds."
+            <p className="text-lg text-charcoal leading-relaxed mb-6 font-open-sans">
+              We are also part of a larger vision - to see Rakiura pest free and thriving through Predator Free Rakiura 2050.
+            </p>
+            <p className="text-lg text-charcoal leading-relaxed italic font-open-sans">
+              Project Purpose:  "rejuvenate indigenous flora and fauna on the Peninsula through the heavy suppression of rats, possums, feral cats, and deer, along with eradication of introduced weeds"
             </p>
             <div className="mt-8">
               <Link
@@ -82,19 +83,19 @@ export default function Home() {
               </div>
 
               {/* Professional Map Background */}
-              <div className="relative h-[300px] overflow-hidden">
+              <div className="relative h-[400px] overflow-hidden">
                 {/* Map background image */}
                 <div className="absolute inset-0">
                   <Image
-                    src="/images/overview-map-rakiura.jpeg"
+                    src="/images/southIslandMap.png"
                     alt="Overview Map of Location in Rakiura (Stewart Island)"
                     fill
-                    className="object-cover"
+                    className="object-contain"
                   />
                 </div>
 
-                {/* Clickable Location marker - positioned over the green circle in the map */}
-                <div className="absolute top-[42%] left-[62%]">
+                {/* Clickable Location marker - positioned near the red dot, not covering it */}
+                <div className="absolute top-[85%] left-[46%]">
                   <a
                     href="https://www.google.com/maps/search/?api=1&query=-46.91503,168.04990"
                     target="_blank"
@@ -102,11 +103,9 @@ export default function Home() {
                     className="group relative block cursor-pointer"
                     aria-label="View Millars Beach on Google Maps"
                   >
-                    <MapPin className="h-10 w-10 text-red-600 drop-shadow-lg group-hover:text-red-500 transition-colors" />
-                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-white px-5 py-3 rounded-md shadow-lg whitespace-nowrap group-hover:bg-gray-100 transition-colors flex items-center">
-                      <MapPin className="mr-2 h-5 w-5 text-dark-green" />
-                      <span className="font-medium text-dark-green font-montserrat">Click to view the location</span>
-                      <ExternalLink className="ml-1 h-4 w-4 text-gray-500" />
+                    <div className="bg-white px-5 py-3 rounded-md shadow-lg whitespace-nowrap group-hover:bg-sea-green group-hover:text-white transition-colors flex items-center">
+                      <span className="font-medium text-dark-green group-hover:text-white font-montserrat">View Interactive Map</span>
+                      <ExternalLink className="ml-1 h-4 w-4 text-gray-500 group-hover:text-white" />
                     </div>
                   </a>
                 </div>
@@ -144,28 +143,27 @@ export default function Home() {
                       <div className="col-span-12 md:col-span-7 text-center md:text-left">
                         <div className="flex justify-center md:justify-start mb-4">
                           <div className="flex items-center">
-                            <Image src="/trap-nz-logo.png" alt="trap.nz logo" width={30} height={30} className="mr-2" />
+                            <Image src="/images/logo.png" alt="Millars Beach Conservation Trust Logo" width={30} height={30} className="mr-2" />
                             <h3 className="text-3xl font-bold text-white font-montserrat">
-                              <span className="text-white">trap</span>
+                              <span className="text-white">Trap</span>
                               <span className="text-red-200">.</span>
-                              <span className="text-white">nz</span>
+                              <span className="text-white">Nz</span>
                             </h3>
                           </div>
                         </div>
 
                         <p className="text-white mb-6 max-w-xs mx-auto md:mx-0">
-                          Our project success is measured by both the increase in birdlife and other flora/fauna and the
-                          reduction of their predators.
+                          We use Trap.NZ - New Zealand's predator control tracking system - to monitor and record our conservation efforts in real-time.
                         </p>
 
                         <a
                           href="https://www.trap.nz/project/20127930/info"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="bg-white text-[#b71c1c] px-5 py-3 rounded-md shadow-lg hover:bg-gray-100 transition-colors flex items-center justify-center md:justify-start mx-auto md:mx-0 max-w-xs font-medium font-montserrat"
+                          className="bg-white text-[#b71c1c] px-3 py-3 rounded-md shadow-lg transition-colors inline-flex items-center justify-start font-medium font-montserrat hover:bg-sea-green hover:text-white group"
                         >
-                          <BarChart3 className="mr-2 h-5 w-5" />
-                          View Progress on Trap.NZ
+                          <BarChart3 className="mr-1 h-5 w-5 group-hover:text-white" />
+                          See Our Progress
                         </a>
                       </div>
 
@@ -173,7 +171,7 @@ export default function Home() {
                       <div className="hidden md:block md:col-span-5">
                         <div className="relative w-[140px] h-[280px] mx-auto">
                           <Image
-                            src="/trap-nz-mobile-app-map.png"
+                            src="/images/trap-nz-mobile-app-map.png"
                             alt="trap.nz mobile app"
                             width={140}
                             height={280}
@@ -206,13 +204,13 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-bold text-dark-green mb-6 font-montserrat">Wildlife at Millars Beach</h2>
-            <p className="text-lg text-charcoal leading-relaxed mb-8">
+            <p className="text-lg text-charcoal leading-relaxed mb-8 font-open-sans">
               Our conservation efforts are helping protect and restore native wildlife on the peninsula, including kiwi,
               tui, bellbirds, and many other species. Visit our About page to learn more and see footage of the wildlife
               we're working to protect.
             </p>
             <Link
-              href="/about#kiwi-footage"
+              href="/gallery"
               className="bg-sea-green hover:bg-spring-green text-white px-6 py-3 rounded-md font-medium transition-colors inline-block"
             >
               See Our Wildlife
@@ -225,20 +223,20 @@ export default function Home() {
       <section className="bg-dark-green text-white py-16">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold mb-4 font-montserrat">Join Our Conservation Efforts</h2>
-          <p className="text-lg mb-8 max-w-2xl mx-auto">
+          <p className="text-lg mb-8 max-w-2xl mx-auto font-open-sans">
             Whether through donations, volunteering, or spreading awareness, your support makes a meaningful difference
             in preserving this pristine ecosystem.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-8">
             <Link
               href="/donate"
-              className="bg-sea-green hover:bg-spring-green text-white px-6 py-3 rounded-md font-medium transition-colors"
+              className="bg-sea-green hover:bg-spring-green text-white px-6 py-3 rounded-md font-medium transition-colors inline-block w-40 text-center"
             >
               Donate
             </Link>
             <Link
               href="/contact"
-              className="bg-transparent border-2 border-white hover:bg-white hover:text-dark-green text-white px-6 py-3 rounded-md font-medium transition-colors"
+              className="bg-sea-green hover:bg-spring-green text-white px-6 py-3 rounded-md font-medium transition-colors inline-block w-40 text-center"
             >
               Contact Us
             </Link>

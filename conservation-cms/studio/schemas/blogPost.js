@@ -1,3 +1,5 @@
+"use client";
+
 export default {
   name: "blogPost",
   title: "Blog Posts",

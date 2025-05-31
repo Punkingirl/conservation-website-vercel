@@ -4,6 +4,7 @@ import type React from "react"
 
 import { useState, useRef, useEffect } from "react"
 import { Play, Pause, Volume2, VolumeX } from "lucide-react"
+import Image from "next/image"
 
 interface AudioPlayerProps {
   audioSrc: string
@@ -75,37 +76,40 @@ export default function AudioPlayer({ audioSrc, label, fallbackSrc }: AudioPlaye
   }
 
   return (
-    <div className="flex items-center gap-3 p-4 bg-gray-50 rounded-lg">
+    <div className="w-full bg-[#1a2e1a] rounded-xl p-4 shadow-lg border border-[#1a2e1a]">
       {/* Hidden audio element */}
-      <audio ref={audioRef} src={audioSrc} onEnded={handleEnded} onError={handleError} preload="metadata" />
+      <audio
+        ref={audioRef}
+        src={audioSrc}
+        onEnded={handleEnded}
+        onError={handleError}
+        preload="metadata"
+        style={{ display: "none" }}
+      />
 
-      <button
-        onClick={togglePlayback}
-        disabled={audioError}
-        className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors ${
-          audioError ? "bg-gray-100 cursor-not-allowed" : "bg-gray-200 hover:bg-gray-300"
-        }`}
-        aria-label={isPlaying ? `Pause ${label}` : `Play ${label}`}
-      >
-        {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6 ml-1" />}
-      </button>
-
-      <div className="flex-1">
-        <div className="text-lg font-medium">{label}</div>
-        <div className="text-sm text-gray-500">
+      <div className="flex flex-col items-start h-full">
+        <div className="flex items-center gap-3">
+          <button
+            onClick={togglePlayback}
+            disabled={audioError}
+            className={`flex items-center gap-2 px-4 py-2 rounded-full font-semibold text-base shadow-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#4D9355] ${
+              audioError ? "bg-gray-300 text-gray-400 cursor-not-allowed" : "bg-[#4D9355] text-white hover:bg-green-700"
+            }`}
+            aria-label={isPlaying ? `Pause ${label}` : `Play ${label}`}
+          >
+            {isPlaying ? (
+              <Pause className="w-5 h-5 text-white" />
+            ) : (
+              <Play className="w-5 h-5 text-white" />
+            )}
+            <span>{isPlaying ? "Pause" : "Play"}</span>
+          </button>
+          <div className="text-lg font-semibold text-white">{label}</div>
+        </div>
+        <div className="text-xs text-[#b0b3c6] mt-auto ml-auto">
           {audioError ? "Audio unavailable. Please try again later." : "New Zealand Forest Birds"}
         </div>
       </div>
-
-      {!audioError && (
-        <button
-          onClick={toggleMute}
-          className="w-10 h-10 rounded-full flex items-center justify-center bg-gray-200 hover:bg-gray-300"
-          aria-label={isMuted ? "Unmute" : "Mute"}
-        >
-          {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
-        </button>
-      )}
     </div>
   )
 }

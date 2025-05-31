@@ -18,6 +18,7 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState<boolean | null>(null)
   const [errorMessage, setErrorMessage] = useState("")
+  const [newsletterEmail, setNewsletterEmail] = useState("")
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
@@ -34,8 +35,7 @@ export default function ContactPage() {
     setErrorMessage("")
 
     try {
-      // Using Formspree as a reliable alternative that doesn't require API keys
-      const response = await fetch("https://formspree.io/f/xleqgkrw", {
+      const response = await fetch("http://localhost:8000/api/contact/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -45,8 +45,6 @@ export default function ContactPage() {
           email: formData.email,
           subject: formData.subject,
           message: formData.message,
-          _subject: `New contact form submission: ${formData.subject}`,
-          _replyto: formData.email,
         }),
       })
 
@@ -72,6 +70,26 @@ export default function ContactPage() {
       setIsSubmitting(false)
     }
   }
+
+  const handleNewsletterSubscribe = async (e) => {
+    e.preventDefault();
+    if (!newsletterEmail) return;
+    try {
+      const response = await fetch("http://localhost:8000/api/newsletter/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: newsletterEmail }),
+      });
+      if (response.ok) {
+        alert("Thank you for subscribing!");
+        setNewsletterEmail("");
+      } else {
+        alert("There was an error. Please try again.");
+      }
+    } catch (err) {
+      alert("There was an error. Please try again.");
+    }
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
@@ -113,15 +131,16 @@ export default function ContactPage() {
 
           {/* Contact Form and Information */}
           <div className="grid md:grid-cols-5 gap-16 mb-16">
-            {/* Contact Form - 3 columns wide */}
-            <div className="md:col-span-3 bg-gray-50 rounded-lg shadow-md overflow-hidden">
+            {/* Left column: Send Us a Message only */}
+            <div className="md:col-span-3 flex flex-col h-full justify-between">
+              {/* Send Us a Message */}
+              <div className="bg-gray-50 rounded-lg shadow-md overflow-hidden flex-1 flex flex-col">
               <div className="bg-dark-green p-6 text-white">
                 <h3 className="text-2xl font-bold font-montserrat">Send Us a Message</h3>
                 <p className="mt-2 text-gray-100">We'll get back to you as soon as possible</p>
               </div>
-
-              <div className="p-8">
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="p-8 flex-1 flex flex-col">
+                  <form onSubmit={handleSubmit} className="space-y-6 flex-1 flex flex-col">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
@@ -208,102 +227,92 @@ export default function ContactPage() {
                 </form>
               </div>
             </div>
-
-            {/* Contact Information - 2 columns wide */}
-            <div className="md:col-span-2 space-y-8">
-              {/* Contact Details Card */}
+            </div>
+            {/* Right column: Newsletter Signup + Contact Details */}
+            <div className="md:col-span-2 flex flex-col h-full justify-between">
+              {/* Newsletter Signup - Stay Updated */}
               <div className="bg-gray-50 rounded-lg shadow-md overflow-hidden">
                 <div className="bg-dark-green p-6 text-white">
-                  <h3 className="text-xl font-bold font-montserrat">Contact Details</h3>
+                  <h3 className="text-2xl font-bold font-montserrat flex items-center justify-center">
+                    <Mail className="mr-2 h-7 w-7" /> Stay Updated
+                  </h3>
                 </div>
-                <div className="p-6 space-y-4">
+                <div className="p-6 flex flex-col items-center">
+                  <p className="mb-4 text-charcoal text-center text-lg font-semibold leading-tight">
+                    Sign up to receive important updates and progress from Millars Beach Restoration Project.
+                  </p>
+                  <form onSubmit={handleNewsletterSubscribe} className="w-full max-w-md flex flex-col items-center">
+                    <div className="flex w-full gap-4">
+                      <input
+                        type="email"
+                        placeholder="Your Email Address"
+                        value={newsletterEmail}
+                        onChange={e => setNewsletterEmail(e.target.value)}
+                        className="flex-1 border border-gray-300 rounded-md px-4 py-3 text-lg focus:ring-sea-green focus:border-sea-green"
+                        required
+                      />
+                      <button
+                        type="submit"
+                        className="bg-sea-green hover:bg-spring-green text-white px-4 py-2 rounded-md font-medium text-base transition-colors"
+                      >
+                        Subscribe
+                      </button>
+                    </div>
+                    <p className="text-xs text-gray-500 mt-4 text-center">
+                      We respect your privacy and will never share your information with third parties.
+                    </p>
+                  </form>
+                </div>
+              </div>
+              {/* Contact Details */}
+              <div className="bg-gray-50 rounded-lg shadow-md overflow-hidden flex-1 flex flex-col min-h-[340px] mt-4">
+                <div className="bg-dark-green p-4 text-white">
+                  <h3 className="text-2xl font-bold font-montserrat">Contact Details</h3>
+                </div>
+                <div className="p-4 space-y-3">
                   <div className="flex items-start">
                     <Mail className="h-5 w-5 text-sea-green mt-1 flex-shrink-0" />
                     <div className="ml-3">
-                      <h4 className="font-medium text-dark-green">Email</h4>
+                      <h4 className="font-medium text-dark-green text-base">Email</h4>
                       <a
                         href="mailto:millarsbeach@gmail.com"
-                        className="text-gray-600 hover:text-sea-green transition-colors"
+                        className="text-gray-600 hover:text-sea-green transition-colors text-sm"
                       >
                         millarsbeach@gmail.com
                       </a>
                     </div>
                   </div>
-
                   <div className="flex items-start">
                     <Phone className="h-5 w-5 text-sea-green mt-1 flex-shrink-0" />
                     <div className="ml-3">
-                      <h4 className="font-medium text-dark-green">Phone</h4>
-                      <p className="text-gray-600">+64 27 123 4567</p>
-                      <p className="text-sm text-gray-500">Available Mon-Fri, 9am-5pm NZST</p>
+                      <h4 className="font-medium text-dark-green text-base">Phone</h4>
+                      <p className="text-gray-600 text-sm">+64 27 123 4567</p>
+                      <p className="text-xs text-gray-500">Available Mon-Fri, 9am-5pm NZST</p>
                     </div>
                   </div>
-
                   <div className="flex items-start">
                     <MapPin className="h-5 w-5 text-sea-green mt-1 flex-shrink-0" />
                     <div className="ml-3">
-                      <h4 className="font-medium text-dark-green">Location</h4>
-                      <p className="text-gray-600">Millars Beach Peninsula</p>
-                      <p className="text-gray-600">Paterson Inlet, Rakiura (Stewart Island)</p>
-                      <p className="text-gray-600">New Zealand</p>
+                      <h4 className="font-medium text-dark-green text-base">Location</h4>
+                      <p className="text-gray-600 text-sm">Millars Beach Peninsula</p>
+                      <p className="text-gray-600 text-sm">Paterson Inlet, Rakiura (Stewart Island)</p>
+                      <p className="text-gray-600 text-sm pb-2">New Zealand</p>
                       <a
                         href="https://www.google.com/maps/search/?api=1&query=-46.91503,168.04990"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sea-green hover:text-spring-green text-sm mt-1 inline-flex items-center"
+                        className="text-sea-green hover:text-spring-green text-xs mt-1 inline-flex items-center"
                       >
                         View on Google Maps <ExternalLink className="ml-1 h-3 w-3" />
                       </a>
                     </div>
                   </div>
-
                   <div className="flex items-start">
                     <Clock className="h-5 w-5 text-sea-green mt-1 flex-shrink-0" />
                     <div className="ml-3">
                       <h4 className="font-medium text-dark-green">Response Time</h4>
                       <p className="text-gray-600">We aim to respond to all inquiries within 2 business days.</p>
                     </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Social Media Card */}
-              <div className="bg-gray-50 rounded-lg shadow-md overflow-hidden">
-                <div className="bg-dark-green p-6 text-white">
-                  <h3 className="text-xl font-bold font-montserrat">Follow Us</h3>
-                </div>
-                <div className="p-6">
-                  <p className="text-gray-600 mb-4">
-                    Stay updated with our latest news and conservation efforts on social media.
-                  </p>
-                  <div className="flex space-x-4">
-                    <a
-                      href="https://facebook.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-gray-100 hover:bg-gray-200 text-gray-700 p-3 rounded-full transition-colors"
-                      aria-label="Facebook"
-                    >
-                      <Facebook className="h-5 w-5" />
-                    </a>
-                    <a
-                      href="https://twitter.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-gray-100 hover:bg-gray-200 text-gray-700 p-3 rounded-full transition-colors"
-                      aria-label="Twitter"
-                    >
-                      <Twitter className="h-5 w-5" />
-                    </a>
-                    <a
-                      href="https://instagram.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-gray-100 hover:bg-gray-200 text-gray-700 p-3 rounded-full transition-colors"
-                      aria-label="Instagram"
-                    >
-                      <Instagram className="h-5 w-5" />
-                    </a>
                   </div>
                 </div>
               </div>
