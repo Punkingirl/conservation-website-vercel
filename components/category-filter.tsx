@@ -4,7 +4,7 @@ import { useState } from "react"
 import Image from "next/image"
 import { urlFor } from "@/lib/sanity"
 
-export function CategoryFilter({ images }) {
+export function CategoryFilter({ images }: any) {
   const [activeCategory, setActiveCategory] = useState("all")
 
   // Ensure images is an array before filtering
