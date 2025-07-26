@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { urlFor } from "@/lib/sanity"
+
 
 export function CategoryFilter({ images }: any) {
   const [activeCategory, setActiveCategory] = useState("all")
@@ -45,7 +45,7 @@ export function CategoryFilter({ images }: any) {
             <div key={item._id} className="flex flex-col">
               <div className="relative aspect-video mb-2 overflow-hidden rounded-md">
                 <Image
-                  src={urlFor(item.image).width(600).height(400).url() || "/placeholder.svg?height=400&width=600"}
+                  src={item.image || "/placeholder.svg?height=400&width=600"}
                   alt={item.alt || "Gallery image"}
                   width={600}
                   height={400}

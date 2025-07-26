@@ -97,7 +97,7 @@ export default function BlogPage() {
           ) : (
             <div className="text-center py-12">
               <p className="text-gray-500 mb-4">No blog posts found.</p>
-              <p className="text-gray-500">Blog posts will appear here once they are added to the Sanity CMS.</p>
+              <p className="text-gray-500">Blog posts will appear here once they are added to the CMS.</p>
             </div>
           )}
         </div>
