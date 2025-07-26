@@ -4,7 +4,7 @@ import { format } from "date-fns"
 import SiteHeader from "@/components/site-header"
 import SiteFooter from "@/components/site-footer"
 
-// Reduced to just three focused blog posts
+// Sample blog posts data structure
 const mockBlogPosts = [
   {
     _id: "post-1",
@@ -48,21 +48,17 @@ const mockBlogPosts = [
 ]
 
 export default function BlogPage() {
-  // Use our mock data instead of fetching from Sanity
   const blogPosts = mockBlogPosts
 
   return (
     <div>
-      {/* Navigation */}
       <SiteHeader currentPath="/blog" />
 
-      <main className="max-w-6xl mx-auto bg-white">
-        {/* Page Title */}
+      <main className="max-w-6xl mx-auto bg-white pt-8">
         <div className="text-center my-12">
           <h1 className="text-4xl font-bold tracking-wider">Blog</h1>
         </div>
 
-        {/* Blog Posts Grid */}
         <div className="px-6 mb-12">
           {blogPosts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -107,7 +103,6 @@ export default function BlogPage() {
         </div>
       </main>
 
-      {/* Footer */}
       <SiteFooter />
     </div>
   )

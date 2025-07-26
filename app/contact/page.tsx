@@ -59,7 +59,10 @@ export default function ContactPage() {
         })
       } else {
         const errorData = await response.json()
-        throw new Error(errorData.error || "Form submission failed")
+        setSubmitSuccess(false)
+        setErrorMessage(
+          errorData?.detail || errorData?.error || "There was an error submitting your message. Please try again."
+        )
       }
     } catch (error) {
       setSubmitSuccess(false)
@@ -71,7 +74,7 @@ export default function ContactPage() {
     }
   }
 
-  const handleNewsletterSubscribe = async (e) => {
+  const handleNewsletterSubscribe = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!newsletterEmail) return;
     try {

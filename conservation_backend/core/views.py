@@ -3,6 +3,10 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
 from contact.models import ContactMessage, NewsletterSubscriber
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from django.contrib.auth import authenticate
 
 @csrf_exempt
 def contact_view(request):
@@ -45,4 +49,14 @@ def newsletter_signup(request):
         return JsonResponse({'success': True, 'created': created})
     elif request.method == 'GET':
         return JsonResponse({'info': 'Please POST your email as JSON to sign up for the newsletter. Example: {\"email\": \"your@email.com\"}'})
-    return JsonResponse({'error': 'Invalid request'}, status=400) 
+    return JsonResponse({'error': 'Invalid request'}, status=400)
+
+class LoginView(APIView):
+    def post(self, request):
+        username = request.data.get('username')
+        password = request.data.get('password')
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            # Optionally, return a token here if using token auth
+            return Response({"success": True, "message": "Login successful"})
+        return Response({"success": False, "message": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED) 

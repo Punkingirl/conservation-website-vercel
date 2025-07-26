@@ -541,7 +541,7 @@ export default function DonatePage() {
       {/* Navigation */}
       <SiteHeader currentPath="/donate" />
 
-      {/* Hero Section with Aerial Drone Background */}
+      {/* Hero Section */}
       <div className="relative py-24">
         {/* Background Image */}
         <div className="absolute inset-0 overflow-hidden">
@@ -552,7 +552,7 @@ export default function DonatePage() {
             className="object-cover"
             priority
           />
-          {/* Dark overlay for better text readability */}
+ 
           <div className="absolute inset-0 bg-dark-green bg-opacity-50"></div>
         </div>
 

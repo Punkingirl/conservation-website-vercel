@@ -122,6 +122,52 @@ export default function AdminDashboard() {
             </div>
           </div>
 
+          {/* Contact Messages Card */}
+          <div className="bg-white overflow-hidden shadow rounded-lg">
+            <div className="p-5">
+              <div className="flex items-center">
+                <div className="flex-shrink-0 bg-yellow-100 rounded-md p-3">
+                  <FileText className="h-6 w-6 text-yellow-600" />
+                </div>
+                <div className="ml-5">
+                  <h3 className="text-lg font-medium text-gray-900">Contact Messages</h3>
+                  <p className="text-gray-500">View and manage contact messages</p>
+                </div>
+              </div>
+              <div className="mt-6">
+                <Link
+                  href="/admin/contact-messages"
+                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-yellow-600 hover:bg-yellow-700"
+                >
+                  View Messages
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Newsletter Subscribers Card */}
+          <div className="bg-white overflow-hidden shadow rounded-lg">
+            <div className="p-5">
+              <div className="flex items-center">
+                <div className="flex-shrink-0 bg-pink-100 rounded-md p-3">
+                  <FileText className="h-6 w-6 text-pink-600" />
+                </div>
+                <div className="ml-5">
+                  <h3 className="text-lg font-medium text-gray-900">Newsletter Subscribers</h3>
+                  <p className="text-gray-500">View and manage newsletter subscribers</p>
+                </div>
+              </div>
+              <div className="mt-6">
+                <Link
+                  href="/admin/newsletter"
+                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-pink-600 hover:bg-pink-700"
+                >
+                  View Subscribers
+                </Link>
+              </div>
+            </div>
+          </div>
+
           {/* Website Preview Card */}
           <div className="bg-white overflow-hidden shadow rounded-lg">
             <div className="p-5">

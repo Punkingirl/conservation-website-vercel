@@ -3,11 +3,12 @@ import SiteFooter from "@/components/site-footer"
 import AudioPlayer from "@/components/audio-player"
 import StaticGallery from "@/components/static-gallery"
 
+// API configuration for Trap.NZ integration
 const apiKey = process.env.TRAPNZ_API_KEY;
 const nodeId = process.env.TRAPNZ_NODE_ID;
 
 export default function GalleryPage() {
-  // Local images and videos to display
+  // Media items with their metadata and categorization
   const localMedia = [
     {
       id: "local-1",
@@ -67,7 +68,7 @@ export default function GalleryPage() {
       {/* Navigation */}
       <SiteHeader currentPath="/gallery" />
 
-      <main className="max-w-6xl mx-auto bg-white pb-8">
+      <main className="max-w-6xl mx-auto bg-white pb-8 pt-8">
         {/* Page Title */}
         <div className="text-center my-8">
           <h1 className="text-4xl font-bold uppercase tracking-wider">Gallery</h1>

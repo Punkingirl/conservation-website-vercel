@@ -34,7 +34,9 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${montserrat.variable} ${openSans.variable} font-open-sans bg-gradient-to-b from-[#f0f7f3] to-[#e6f0ec] min-h-screen`}
+      suppressHydrationWarning={true}
       >
+      
         {children}
       </body>
     </html>

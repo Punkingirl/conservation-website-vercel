@@ -9,7 +9,7 @@ export default function AboutPage() {
       {/* Navigation */}
       <SiteHeader currentPath="/about" />
 
-      <main className="max-w-6xl mx-auto bg-white">
+      <main className="max-w-6xl mx-auto bg-white pt-8">
         {/* Page Title */}
         <div className="text-center my-12">
           <h1 className="text-4xl font-bold tracking-wider font-montserrat">About Us</h1>

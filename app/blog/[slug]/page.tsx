@@ -669,7 +669,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
     notFound()
   }
 
-  // Check if this is the kiwi post to apply special styling to the cover image
+
   const isKiwiPost = params.slug === "kiwi-population-recovery"
 
   return (

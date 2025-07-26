@@ -1,8 +1,10 @@
 "use client"
 
+import React from "react"
 import { useState } from "react"
 import Image from "next/image"
 import { Play } from "lucide-react"
+import axios from "axios"
 
 interface LocalMedia {
   id: string
@@ -21,6 +23,8 @@ interface StaticGalleryProps {
 export default function StaticGallery({ images = [] }: StaticGalleryProps) {
   const [activeCategory, setActiveCategory] = useState("all")
   const [activeVideo, setActiveVideo] = useState<string | null>(null)
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const filteredImages = activeCategory === "all" ? images : images.filter((img) => img.category === activeCategory)
 
@@ -35,6 +39,18 @@ export default function StaticGallery({ images = [] }: StaticGalleryProps) {
   const handleVideoClick = (id: string) => {
     setActiveVideo(id === activeVideo ? null : id)
   }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post("/api/login/", { username, password });
+      // Save token/session, redirect, etc.
+      localStorage.setItem("token", res.data.token);
+      window.location.href = "/admin/dashboard"; // or your admin page
+    } catch (err) {
+      console.error("Login failed:", err);
+    }
+  };
 
   return (
     <>
