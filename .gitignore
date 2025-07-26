@@ -29,21 +29,14 @@ next-env.d.ts
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    remotePatterns: [
-      // Add your production domain if you use external images
-      {
-        protocol: 'https',
-        hostname: 'your-domain.com',
-        pathname: '/**',
-      },
-    ],
-    unoptimized: false, // Only set to true for debugging
+    // Remove unoptimized - it's causing issues
+    unoptimized: false,
+
+    // Essential settings for Vercel
     formats: ['image/webp', 'image/avif'],
     quality: 75,
     minimumCacheTTL: 60,
-    dangerouslyAllowSVG: false,
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 }
 
-export default nextConfig
+module.exports = nextConfig
