@@ -2,7 +2,6 @@
 
 import React from "react"
 import { useState } from "react"
-import Image from "next/image"
 import { Play } from "lucide-react"
 import axios from "axios"
 
@@ -76,7 +75,7 @@ export default function StaticGallery({ images = [] }: StaticGalleryProps) {
             <div key={item.id} className="flex flex-col">
               <div className="relative aspect-video mb-2 overflow-hidden rounded-md">
                 {item.type === "image" ? (
-                  <Image
+                  <img
                     src={item.src || "/placeholder.svg"}
                     alt={item.alt}
                     width={600}
@@ -95,7 +94,7 @@ export default function StaticGallery({ images = [] }: StaticGalleryProps) {
                       />
                     ) : (
                       <div className="relative w-full h-full cursor-pointer" onClick={() => handleVideoClick(item.id)}>
-                        <Image
+                        <img
                           src={item.thumbnail || "/placeholder.svg?height=400&width=600&query=video+thumbnail"}
                           alt={`${item.alt} (video thumbnail)`}
                           width={600}
