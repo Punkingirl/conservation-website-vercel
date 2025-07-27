@@ -1,5 +1,4 @@
 import Link from "next/link"
-import Image from "next/image"
 import { notFound } from "next/navigation"
 import { format } from "date-fns"
 import SiteHeader from "@/components/site-header"
@@ -615,13 +614,13 @@ const renderContent = (content: Block[]) => {
         return (
           <div key={index} className="my-6">
             <div>
-              <Image
-                src={imgSrc || "/placeholder.svg"}
-                alt={block.alt || "Blog post image"}
-                width={500}
-                height={300}
-                className="rounded-lg"
-              />
+                          <img
+              src={imgSrc || "/placeholder.svg"}
+              alt={block.alt || "Blog post image"}
+              width={500}
+              height={300}
+              className="rounded-lg"
+            />
               {block.caption && (
                 <div className="text-center text-sm text-gray-600 mt-2">{block.caption}</div>
               )}
@@ -641,7 +640,7 @@ const renderContent = (content: Block[]) => {
               <div className="text-center text-sm text-gray-600 mb-2 max-w-md">{block.caption}</div>
             )}
             <div className={`${isKiwiVideoStill ? "flex justify-center" : ""}`}>
-              <Image
+              <img
                 src={imgSrc || "/placeholder.svg"}
                 alt={block.alt || "Blog post image"}
                 width={isKiwiVideoStill ? 500 : 800}
@@ -696,7 +695,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
 
           <div className="flex items-center">
             {post.author?.avatar && (
-              <Image
+              <img
                 src={post.author.avatar || "/placeholder.svg"}
                 alt={post.author.name}
                 width={40}
@@ -714,7 +713,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         {/* Cover Image - with special styling for kiwi post */}
         {post.coverImage && (
           <div className={`mb-8 ${isKiwiPost ? "flex justify-center" : post.slug.current === "volunteer-weekend-trap-installation" ? "flex justify-center" : ""}`}>
-            <Image
+            <img
               src={post.coverImage || "/placeholder.svg"}
               alt={post.title}
               width={isKiwiPost ? 500 : post.slug.current === "volunteer-weekend-trap-installation" ? 700 : 1200}
