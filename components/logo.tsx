@@ -9,7 +9,7 @@ export default function Logo({ className = "" }: LogoProps) {
     <Link href="/" className={`block ${className}`}>
       <div className="relative h-44 w-auto">
         <img
-          src="https://via.placeholder.com/180x180/2E7D32/FFFFFF?text=MBCT"
+          src="https://raw.githubusercontent.com/Punkingirl/conservation-images/main/logo.png"
           alt="Millars Beach Conservation Trust Logo"
           className="h-full w-auto object-contain"
         />
