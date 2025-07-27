@@ -9,6 +9,8 @@ const nextConfig = {
   experimental: {
     staticPageGenerationTimeout: 120,
   },
+  assetPrefix: '',
+  basePath: '',
 }
 
 export default nextConfig
