@@ -1,5 +1,4 @@
 import Link from "next/link"
-import Image from "next/image"
 import { MapPin, ExternalLink, BarChart3, ChevronRight } from "lucide-react"
 import SiteHeader from "@/components/site-header"
 import SiteFooter from "@/components/site-footer"
@@ -13,12 +12,10 @@ export default function Home() {
       {/* Hero Section with Beach Background */}
       <div className="relative w-full h-[500px] flex items-center justify-center">
         <div className="absolute inset-0">
-          <Image
+          <img
             src="https://raw.githubusercontent.com/Punkingirl/conservation-images/main/millars-beach-peninsula.jpeg"
             alt="Millars Beach Peninsula"
-            fill
-            className="object-cover"
-            priority
+            className="w-full h-full object-cover"
           />
           {/* Semi-transparent overlay for better text visibility */}
           <div className="absolute inset-0 bg-dark-green bg-opacity-40"></div>
@@ -86,11 +83,10 @@ export default function Home() {
               <div className="relative h-[400px] overflow-hidden">
                 {/* Map background image */}
                 <div className="absolute inset-0">
-                  <Image
+                  <img
                     src="https://raw.githubusercontent.com/Punkingirl/conservation-images/main/southIslandMap.png"
                     alt="Overview Map of Location in Rakiura (Stewart Island)"
-                    fill
-                    className="object-contain"
+                    className="w-full h-full object-contain"
                   />
                 </div>
 
@@ -143,7 +139,7 @@ export default function Home() {
                       <div className="col-span-12 md:col-span-7 text-center md:text-left">
                         <div className="flex justify-center md:justify-start mb-4">
                           <div className="flex items-center">
-                            <Image src="https://raw.githubusercontent.com/Punkingirl/conservation-images/main/logo.png" alt="Millars Beach Conservation Trust Logo" width={30} height={30} className="mr-2" />
+                            <img src="https://raw.githubusercontent.com/Punkingirl/conservation-images/main/logo.png" alt="Millars Beach Conservation Trust Logo" width={30} height={30} className="mr-2" />
                             <h3 className="text-3xl font-bold text-white font-montserrat">
                               <span className="text-white">Trap</span>
                               <span className="text-red-200">.</span>
@@ -170,7 +166,7 @@ export default function Home() {
                       {/* Mobile app screenshot - takes 5 columns on medium screens and up, hidden on small screens */}
                       <div className="hidden md:block md:col-span-5">
                         <div className="relative w-[140px] h-[280px] mx-auto">
-                          <Image
+                          <img
                             src="https://raw.githubusercontent.com/Punkingirl/conservation-images/main/trap-nz-mobile-app-map.png"
                             alt="trap.nz mobile app"
                             width={140}
