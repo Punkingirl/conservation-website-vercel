@@ -9,8 +9,6 @@ const nextConfig = {
   images: {
     // Essential settings for Vercel
     formats: ['image/webp', 'image/avif'],
-    quality: 75,
-    minimumCacheTTL: 60,
     remotePatterns: [
       {
         protocol: 'http',
