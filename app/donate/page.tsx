@@ -546,7 +546,7 @@ export default function DonatePage() {
         {/* Background Image */}
         <div className="absolute inset-0 overflow-hidden">
           <Image
-            src="/images/aerial-drone-view.jpeg"
+            src="/aerial-drone-view.jpeg"
             alt="Aerial view of Millars Beach Peninsula"
             fill
             className="object-cover"

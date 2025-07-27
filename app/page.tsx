@@ -14,7 +14,7 @@ export default function Home() {
       <div className="relative w-full h-[500px] flex items-center justify-center">
         <div className="absolute inset-0">
           <Image
-            src="/images/millars-beach-peninsula.jpeg"
+            src="/millars-beach-peninsula.jpeg"
             alt="Millars Beach Peninsula"
             fill
             className="object-cover"
@@ -87,7 +87,7 @@ export default function Home() {
                 {/* Map background image */}
                 <div className="absolute inset-0">
                   <Image
-                    src="/images/southIslandMap.png"
+                    src="/southIslandMap.png"
                     alt="Overview Map of Location in Rakiura (Stewart Island)"
                     fill
                     className="object-contain"
@@ -143,7 +143,7 @@ export default function Home() {
                       <div className="col-span-12 md:col-span-7 text-center md:text-left">
                         <div className="flex justify-center md:justify-start mb-4">
                           <div className="flex items-center">
-                            <Image src="/images/logo.png" alt="Millars Beach Conservation Trust Logo" width={30} height={30} className="mr-2" />
+                            <Image src="/logo.png" alt="Millars Beach Conservation Trust Logo" width={30} height={30} className="mr-2" />
                             <h3 className="text-3xl font-bold text-white font-montserrat">
                               <span className="text-white">Trap</span>
                               <span className="text-red-200">.</span>
@@ -171,7 +171,7 @@ export default function Home() {
                       <div className="hidden md:block md:col-span-5">
                         <div className="relative w-[140px] h-[280px] mx-auto">
                           <Image
-                            src="/images/trap-nz-mobile-app-map.png"
+                            src="/trap-nz-mobile-app-map.png"
                             alt="trap.nz mobile app"
                             width={140}
                             height={280}

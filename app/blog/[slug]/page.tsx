@@ -177,11 +177,11 @@ const mockBlogPosts: { [key: string]: BlogPost } = {
         ],
       },
     ],
-    coverImage: "/images/kiwi-footprints.jpeg",
+            coverImage: "/kiwi-footprints.jpeg",
     category: "Wildlife",
     author: {
       name: "Andy Marshall",
-      avatar: "/images/fern.gif",
+      avatar: "/fern.gif",
       bio: "Conservation Project Manager at Millars Beach Conservation Trust",
     },
   },
@@ -350,11 +350,11 @@ const mockBlogPosts: { [key: string]: BlogPost } = {
         ],
       },
     ],
-    coverImage: "/images/volunteer.jpg",
+            coverImage: "/volunteer.jpg",
     category: "volunteers",
     author: {
       name: "Conservation Team",
-      avatar: "/images/fern.gif",
+      avatar: "/fern.gif",
       bio: "Millars Beach Conservation Trust",
     },
   },
@@ -553,11 +553,11 @@ const mockBlogPosts: { [key: string]: BlogPost } = {
         ],
       },
     ],
-    coverImage: "/images/Prices point rocks.jpg",
+            coverImage: "/Prices point rocks.jpg",
     category: "News",
     author: {
       name: "Andy Marshall",
-      avatar: "/images/fern.gif",
+              avatar: "/fern.gif",
       bio: "Conservation Project Manager at Millars Beach Conservation Trust",
     },
   },
@@ -605,7 +605,7 @@ const renderContent = (content: Block[]) => {
 
       // Use actual images if we have them
       if (block.asset && block.asset._ref === "kiwi-tracks") {
-        imgSrc = "/images/kiwi-footprints.jpeg"
+        imgSrc = "/kiwi-footprints.jpeg"
       } else if (block.asset && block.asset._ref === "kiwi-video-still") {
         imgSrc = "/kiwi-night-vision.png"
         isKiwiVideoStill = true

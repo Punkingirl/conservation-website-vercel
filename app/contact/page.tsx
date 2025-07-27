@@ -103,7 +103,7 @@ export default function ContactPage() {
       <div className="relative w-full h-[300px] flex items-center justify-center">
         <div className="absolute inset-0">
           <Image
-            src="/images/millars-beach-peninsula.jpeg"
+            src="/millars-beach-peninsula.jpeg"
             alt="Millars Beach Peninsula"
             fill
             className="object-cover object-center"
