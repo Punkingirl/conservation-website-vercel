@@ -12,8 +12,6 @@ export default function Logo({ className = "" }: LogoProps) {
           src="https://picsum.photos/180/180"
           alt="Millars Beach Conservation Trust Logo"
           className="h-full w-auto object-contain"
-          onLoad={() => console.log("Logo image loaded successfully")}
-          onError={(e) => console.error("Logo image failed to load:", e)}
         />
       </div>
     </Link>
