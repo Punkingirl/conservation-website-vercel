@@ -3,7 +3,6 @@
 import type React from "react"
 
 import { useState } from "react"
-import Image from "next/image"
 import Link from "next/link"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import SiteHeader from "@/components/site-header"
@@ -545,12 +544,10 @@ export default function DonatePage() {
       <div className="relative py-24">
         {/* Background Image */}
         <div className="absolute inset-0 overflow-hidden">
-          <Image
+          <img
             src="https://raw.githubusercontent.com/Punkingirl/conservation-images/main/aerial-drone-view.jpeg"
             alt="Aerial view of Millars Beach Peninsula"
-            fill
-            className="object-cover"
-            priority
+            className="w-full h-full object-cover"
           />
  
           <div className="absolute inset-0 bg-dark-green bg-opacity-50"></div>

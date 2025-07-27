@@ -4,7 +4,6 @@ import type React from "react"
 
 import { useState } from "react"
 import Link from "next/link"
-import Image from "next/image"
 import { Mail, Clock, DollarSign, Users, Axe, MapPin } from "lucide-react"
 import SiteHeader from "@/components/site-header"
 import SiteFooter from "@/components/site-footer"
@@ -31,12 +30,10 @@ export default function SupportUsPage() {
       {/* Hero Section */}
       <div className="relative w-full h-[300px] flex items-center justify-center">
         <div className="absolute inset-0">
-          <Image
+          <img
             src="https://raw.githubusercontent.com/Punkingirl/conservation-images/main/paterson-inlet-sunrise.jpeg"
             alt="Paterson Inlet Sunrise"
-            fill
-            className="object-cover"
-            priority
+            className="w-full h-full object-cover"
           />
           {/* Semi-transparent overlay for better text visibility */}
           <div className="absolute inset-0 bg-dark-green bg-opacity-50"></div>
@@ -133,7 +130,7 @@ export default function SupportUsPage() {
                       rel="noopener noreferrer"
                       className="flex-shrink-0"
                     >
-                      <Image
+                      <img
                         src="https://raw.githubusercontent.com/Punkingirl/conservation-images/main/giveATrapLogo.png"
                         alt="Give a Trap Logo"
                         width={120}

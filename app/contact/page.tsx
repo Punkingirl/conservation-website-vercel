@@ -3,7 +3,6 @@
 import type React from "react"
 
 import { useState, type FormEvent } from "react"
-import Image from "next/image"
 import { Facebook, Twitter, Instagram, Mail, MapPin, Clock, Phone, ExternalLink } from "lucide-react"
 import SiteHeader from "@/components/site-header"
 import SiteFooter from "@/components/site-footer"
@@ -102,12 +101,10 @@ export default function ContactPage() {
       {/* Hero Section */}
       <div className="relative w-full h-[300px] flex items-center justify-center">
         <div className="absolute inset-0">
-          <Image
+          <img
             src="https://raw.githubusercontent.com/Punkingirl/conservation-images/main/millars-beach-peninsula.jpeg"
             alt="Millars Beach Peninsula"
-            fill
-            className="object-cover object-center"
-            priority
+            className="w-full h-full object-cover object-center"
           />
           {/* Semi-transparent overlay for better text visibility */}
           <div className="absolute inset-0 bg-dark-green bg-opacity-50"></div>
