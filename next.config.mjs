@@ -7,7 +7,7 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    // Essential settings for Vercel
+    // Essential settings for Vercel deployment
     formats: ['image/webp', 'image/avif'],
     remotePatterns: [
       {
