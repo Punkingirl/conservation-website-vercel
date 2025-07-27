@@ -77,7 +77,7 @@ export default function AboutPage() {
             <div className="mt-8">
               <div className="relative w-full h-[320px] md:h-[400px] rounded-lg overflow-hidden">
                 <Image
-                  src="/DJI_island.JPG"
+                  src="https://raw.githubusercontent.com/Punkingirl/conservation-images/main/DJI_island.JPG"
                   alt="Aerial view of Millars Beach Peninsula"
                   fill
                   className="object-cover"
@@ -114,7 +114,7 @@ export default function AboutPage() {
               
               <div className="max-w-2xl mx-auto rounded-lg overflow-hidden shadow-lg flex justify-center items-center bg-white p-8">
                 <Image
-                  src="/volunterr2.png"
+                  src="https://raw.githubusercontent.com/Punkingirl/conservation-images/main/volunterr2.png"
                   alt="Millars Beach volunteers group photo"
                   width={500}
                   height={300}

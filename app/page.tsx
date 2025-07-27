@@ -87,7 +87,7 @@ export default function Home() {
                 {/* Map background image */}
                 <div className="absolute inset-0">
                   <Image
-                    src="/southIslandMap.png"
+                    src="https://raw.githubusercontent.com/Punkingirl/conservation-images/main/southIslandMap.png"
                     alt="Overview Map of Location in Rakiura (Stewart Island)"
                     fill
                     className="object-contain"
@@ -171,7 +171,7 @@ export default function Home() {
                       <div className="hidden md:block md:col-span-5">
                         <div className="relative w-[140px] h-[280px] mx-auto">
                           <Image
-                            src="/trap-nz-mobile-app-map.png"
+                            src="https://raw.githubusercontent.com/Punkingirl/conservation-images/main/trap-nz-mobile-app-map.png"
                             alt="trap.nz mobile app"
                             width={140}
                             height={280}

@@ -177,11 +177,11 @@ const mockBlogPosts: { [key: string]: BlogPost } = {
         ],
       },
     ],
-            coverImage: "/kiwi-footprints.jpeg",
+            coverImage: "https://raw.githubusercontent.com/Punkingirl/conservation-images/main/kiwi-footprints.jpeg",
     category: "Wildlife",
     author: {
       name: "Andy Marshall",
-      avatar: "/fern.gif",
+      avatar: "https://raw.githubusercontent.com/Punkingirl/conservation-images/main/fern.gif",
       bio: "Conservation Project Manager at Millars Beach Conservation Trust",
     },
   },
@@ -350,11 +350,11 @@ const mockBlogPosts: { [key: string]: BlogPost } = {
         ],
       },
     ],
-            coverImage: "/volunteer.jpg",
+            coverImage: "https://raw.githubusercontent.com/Punkingirl/conservation-images/main/volunteer.jpg",
     category: "volunteers",
     author: {
       name: "Conservation Team",
-      avatar: "/fern.gif",
+      avatar: "https://raw.githubusercontent.com/Punkingirl/conservation-images/main/fern.gif",
       bio: "Millars Beach Conservation Trust",
     },
   },
@@ -553,11 +553,11 @@ const mockBlogPosts: { [key: string]: BlogPost } = {
         ],
       },
     ],
-            coverImage: "/Prices point rocks.jpg",
+            coverImage: "https://raw.githubusercontent.com/Punkingirl/conservation-images/main/Prices point rocks.jpg",
     category: "News",
     author: {
       name: "Andy Marshall",
-              avatar: "/fern.gif",
+              avatar: "https://raw.githubusercontent.com/Punkingirl/conservation-images/main/fern.gif",
       bio: "Conservation Project Manager at Millars Beach Conservation Trust",
     },
   },
@@ -605,12 +605,12 @@ const renderContent = (content: Block[]) => {
 
       // Use actual images if we have them
       if (block.asset && block.asset._ref === "kiwi-tracks") {
-        imgSrc = "/kiwi-footprints.jpeg"
+        imgSrc = "https://raw.githubusercontent.com/Punkingirl/conservation-images/main/kiwi-footprints.jpeg"
       } else if (block.asset && block.asset._ref === "kiwi-video-still") {
         imgSrc = "/kiwi-night-vision.png"
         isKiwiVideoStill = true
       } else if (block.asset && block.asset._ref === "conservation-volunteers-field") {
-        imgSrc = "/volunteer.jpg"
+        imgSrc = "https://raw.githubusercontent.com/Punkingirl/conservation-images/main/volunteer.jpg"
         // Set custom size for this image
         return (
           <div key={index} className="my-6">

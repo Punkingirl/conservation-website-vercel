@@ -32,7 +32,7 @@ export default function SupportUsPage() {
       <div className="relative w-full h-[300px] flex items-center justify-center">
         <div className="absolute inset-0">
           <Image
-            src="/paterson-inlet-sunrise.jpeg"
+            src="https://raw.githubusercontent.com/Punkingirl/conservation-images/main/paterson-inlet-sunrise.jpeg"
             alt="Paterson Inlet Sunrise"
             fill
             className="object-cover"
@@ -134,7 +134,7 @@ export default function SupportUsPage() {
                       className="flex-shrink-0"
                     >
                       <Image
-                        src="/giveATrapLogo.png"
+                        src="https://raw.githubusercontent.com/Punkingirl/conservation-images/main/giveATrapLogo.png"
                         alt="Give a Trap Logo"
                         width={120}
                         height={120}
