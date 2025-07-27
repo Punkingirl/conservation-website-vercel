@@ -6,6 +6,9 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  experimental: {
+    staticPageGenerationTimeout: 120,
+  },
 }
 
 export default nextConfig
