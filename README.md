@@ -2,7 +2,7 @@
 
 A modern conservation website I built for the Millars Beach Conservation Trust during my studies. This project combines my passion for environmental conservation with web development skills.
 
-## 🌿 About the Project
+##  About the Project
 
 This is a full-stack website for a real conservation project in New Zealand. The Millars Beach Conservation Trust works to restore indigenous flora and fauna on the Millars Beach Peninsula through pest reduction. I built this website to help them connect with volunteers, donors, and the community.
 
@@ -15,7 +15,7 @@ This is a full-stack website for a real conservation project in New Zealand. The
 - **Admin dashboard** for content management
 - **Audio player** for native bird sounds
 
-## 🛠️ Tech Stack I Used
+## 🛠 Tech Stack I Used
 
 ### Frontend
 - **Next.js 14** - Latest React framework with App Router
@@ -33,13 +33,13 @@ This is a full-stack website for a real conservation project in New Zealand. The
 - **GitHub** - For version control and hosting media files
 - **External Media Hosting** - Solved a tricky deployment issue with GitHub raw URLs
 
-## 🚀 Cool Problems I Solved
+## Problems I Solved
 
 ### 1. The Image Loading Problem
 **The Challenge**: Images weren't showing up on Vercel deployment
 **What I Learned**: Next.js Image component doesn't work well with external URLs
 **My Solution**: Switched to regular `<img>` tags with GitHub raw URLs
-**Result**: All images now load perfectly! 🎉
+**Result**: All images now load perfectly! 
 
 ### 2. External Media Hosting
 **The Challenge**: Large audio/video files (519MB total) were causing deployment issues
@@ -53,7 +53,7 @@ This is a full-stack website for a real conservation project in New Zealand. The
 **My Solution**: Used Tailwind CSS with custom breakpoints
 **Result**: Seamless experience across all devices
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 conservation-website/
@@ -79,7 +79,7 @@ conservation-website/
     └── videos/                   # Conservation videos
 ```
 
-## 🎨 Design Choices
+##  Design Choices
 
 ### Color Scheme
 I chose a nature-inspired green palette:
@@ -92,7 +92,7 @@ I chose a nature-inspired green palette:
 - **Montserrat** for headings - Modern and bold
 - **Open Sans** for body text - Easy to read
 
-## 🔧 How to Run This Project
+##  How to Run This Project
 
 ### Prerequisites
 - Node.js 18+ 
@@ -127,7 +127,7 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-## 🚀 What I Learned
+##  What I Learned
 
 ### Technical Skills
 - **Full-stack development** with Next.js and Django
@@ -143,28 +143,28 @@ python manage.py runserver
 - **Documentation** for future developers
 - **Testing** and debugging strategies
 
-## 📊 Performance Results
+##  Performance Results
 
 - **Lighthouse Score**: 95+ (Performance, Accessibility, Best Practices)
 - **Load Time**: Under 2 seconds on slow connections
 - **Mobile Performance**: Optimized for all devices
 - **Accessibility**: WCAG 2.1 AA compliant
 
-## 🔒 Security Features I Implemented
+##  Security Features I Implemented
 
 - **Form validation** on both client and server side
 - **CSRF protection** with Django tokens
 - **Input sanitization** to prevent XSS attacks
 - **HTTPS enforcement** for secure connections
 
-## 🧪 Testing Approach
+##  Testing Approach
 
 - **Unit tests** for individual components
 - **Integration tests** for API endpoints
 - **Manual testing** across different devices and browsers
 - **Accessibility testing** for inclusive design
 
-## 📈 Future Improvements I'd Like to Add
+##  Future Improvements I'd Like to Add
 
 - **Real-time updates** with WebSockets
 - **Advanced analytics** to track user engagement
@@ -172,7 +172,7 @@ python manage.py runserver
 - **Multi-language support** for international users
 - **Advanced CMS** with rich text editing
 
-## 🤝 How to Contribute
+##  How to Contribute
 
 1. Fork this repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
@@ -181,11 +181,11 @@ python manage.py runserver
 5. Push to your branch (`git push origin feature/amazing-feature`)
 6. Open a Pull Request
 
-## 📄 License
+##  License
 
 This project is licensed under the MIT License.
 
-## 👨‍💻 About Me
+##  About Me
 
 I'm a student developer passionate about combining technology with environmental conservation. This project represents my journey in full-stack development and problem-solving.
 
@@ -197,13 +197,4 @@ I'm a student developer passionate about combining technology with environmental
 - Deployment and DevOps
 - Problem-solving and debugging
 
-## 📞 Get in Touch
 
-Interested in this project or want to collaborate?
-- **Email**: [Your Email]
-- **LinkedIn**: [Your LinkedIn]
-- **GitHub**: [Your GitHub]
-
----
-
-**Built with ❤️ for conservation and learning** 
